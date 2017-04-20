@@ -1,0 +1,140 @@
+<page-title title="'securityRoleDetail_title'| translate" ng-init="vm.init()"></page-title>
+
+<div class="row">
+	<div class="col-xs-12">
+
+		<form name="form" class="form" ng-submit="vm.save(form, vm.role)" autocomplete="off" novalidate>
+
+			<!--Name --> 
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.nameEn.$invalid]">
+					<label for="nameEn" ng-bind="'global_name_en' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.role.name.en" 
+								class="form-control" 
+								id="nameEn" 
+								name="nameEn" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Name --> 
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.nameEs.$invalid]">
+					<label for="nameEs" ng-bind="'global_name_es' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.role.name.es" 
+								class="form-control" 
+								id="nameEs" 
+								name="nameEs" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Description En -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.descriptionEn.$invalid]">
+					<label for="descriptionEn" ng-bind="'global_description_en' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.role.description.en" 
+								class="form-control" 
+								id="descriptionEn" 
+								name="descriptionEn" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Description Es-->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.descriptionEs.$invalid]">
+					<label for="descriptionEs" ng-bind="'global_description_es' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.role.description.es" 
+								class="form-control" 
+								id="descriptionEs" 
+								name="descriptionEs" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Permission -->
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-lg-6">
+					<rd-widget>
+						<rd-widget-header icon="fa fa-unlock-alt" title="{{'global_permissions' | translate}}">
+							<a class="" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+						</rd-widget-header>
+						<rd-widget-body classes="medium no-padding">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<th width="1%">
+											<checkbox-list-header table-check="vm.tableCheck" ></checkbox-list-header>
+										</th>
+										<th width="40%"></th>
+										<th width="59%"></th>
+									</thead>
+									<tbody>
+										<tr ng-repeat="p in vm.permissionList">
+											<td>
+												<checkbox-list-item item-id="p.id" checked="vm.getPermissionState(p.id)" checkboxes="vm.tableCheck"></table-check-item>
+											</td>
+											<td ng-bind="p.name[$root.lang]"></td>
+											<td ng-bind="p.description[$root.lang]"></td>
+										</tr>  
+									</tbody>
+								</table>
+							</div>      
+						</rd-widget-body>
+					</rd-widget>
+				</div>
+			</div>
+
+			<br/>
+
+			<!-- Enabled -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4">
+					<label for="enabled" ng-bind="'global_enabled' | translate">Enabled</label>
+					<div>
+						<input type="checkbox"
+								ng-init="vm.role.enabled = false"
+								ng-model="vm.role.enabled" 
+								id="enabled" 
+								name="enabled" 
+								>
+					</div>
+				</div>
+			</div>
+
+			<divider-line></divider-line>
+
+			<div class="row">
+				<div class="col-sm-12 text-right cancel-ok-button">
+					<cancel-ok-button submitted="vm.submitted"></cancel-ok-button>		
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+<page-title title="'securityRole_title'| translate" ng-init="vm.init()"></page-title> 
+
+<div class="row">
+  <div class="col-lg-12">
+    <rd-widget>
+      
+      <rd-widget-header icon="fa fa-user-md" title="{{'global_roleList' | translate}}">
+        <a class="btn btn-default btn-sm" role="button" ui-sref="role-detail({id : ''})"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a class="btn btn-default btn-sm" role="button" ng-click="vm.confirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+         - 
+        <a class="btn btn-default btn-sm" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+      </rd-widget-header>
+      
+      <rd-widget-body classes="xlarge no-padding">
+        <div class="table-responsive">
+          <table class="table">
+						<thead>
+              <th width="1%">
+                <checkbox-list-header table-check="vm.tableCheck" ></checkbox-list-header>
+              </th>
+							<th width="20%" ng-bind="'global_name' | translate"></th>
+							<th width="53%" ng-bind="'global_description' | translate"></th>
+              <th width="10%" ng-bind="'global_enabled' | translate" class="text-center"></th>
+							<th width="15%" ng-bind="'global_createdDate' | translate" class="text-center"></th>
+						</thead>
+            <tbody>
+              <tr ng-repeat="r in vm.roleList">
+                <td>
+                    <checkbox-list-item item-id="r.id" checkboxes="vm.tableCheck"></table-check-item>
+                </td>
+                <td ng-bind="r.name[$root.lang]" ui-sref="role-detail({id: r.id})"></td>
+                <td ng-bind="r.description[$root.lang]" ui-sref="role-detail({id: r.id})"></td>
+                <td class="text-center" ui-sref="role-detail({id: r.id})">
+                  <span class="text-success" ng-show="r.enabled"><i class="fa fa-check"></i></span>
+                  <span class="text-danger" ng-show="r.enabled == false"><i class="fa fa-times"></i></span>
+                </td>
+                <td class="text-center" ng-bind="r.createdAt | date: 'MM/dd/yyyy'" ui-sref="role-detail({id: r.id})"></td>
+              </tr>  
+            </tbody>
+          </table>
+        </div>      
+      </rd-widget-body>
+      <rd-widget-footer>
+        <ul class="pagination pagination-sm pull-right">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </rd-widget-footer>
+    </rd-widget>
+  </div>
+</div>

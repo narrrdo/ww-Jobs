@@ -1,0 +1,39 @@
+<div class="login-page-wrapper">
+
+	<div class="login">
+		<div class="login-inner">
+				<h1><i class="fa fa-user-circle" aria-hidden="true"></i> Jobs</h1>
+				
+				
+				<form name="form" class="form" ng-submit="vm.doLogin(form, vm.login)" autocomplete="off" novalidate>
+					
+					<!-- Username-->
+					<div class="has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.username.$invalid]">
+					<input type="text"
+						name="username" 
+						class="form-control" 
+						ng-model="vm.login.username"
+						placeholder="Username" 
+						required/>
+					</div>
+
+					<!-- Password -->
+					<div class="has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.username.$invalid]">
+					<input type="password" 
+						name="password" 
+						class="form-control" 
+						ng-model="vm.login.password"
+						placeholder="Password" 
+						required />
+					</div>
+
+					<button type="submit" 
+						class="btn btn-primary btn-block btn-large"
+						ng-init="vm.submitted = false"
+						ng-click="vm.submitted = true"
+						>Let me in.
+					</button>
+				</form>
+		</div>
+	</div>
+</div>

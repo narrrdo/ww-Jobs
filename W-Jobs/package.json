@@ -1,0 +1,36 @@
+{
+  "name": "WW-Jobs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "capitalize": "^1.0.0",
+    "express": "^4.15.2",
+    "fb": "^2.0.0",
+    "http-status": "^1.0.1",
+    "i18n": "^0.8.3",
+    "jsonwebtoken": "^7.3.0",
+    "jwt-simple": "^0.5.1",
+    "lite-server": "^2.3.0",
+    "mongoose": "^4.9.2",
+    "mongoose-deep-populate": "^3.0.0",
+    "mongoose-hidden": "^1.2.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "passport-local": "^1.0.0",
+    "passport-oauth2": "^1.4.0",
+    "passport-oauth2-middleware": "^1.0.2",
+    "rand-token": "^0.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,68 @@
+<page-title title="'securityUser_title'| translate" ng-init="vm.init()"></page-title> 
+
+<div class="row">
+  <div class="col-lg-12">
+    <rd-widget>
+
+      <rd-widget-header icon="fa fa-users" title="{{'global_userList' | translate}}">
+        <a class="btn btn-default btn-sm" role="button" ui-sref="user-detail({id : ''})"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a class="btn btn-default btn-sm" role="button" ng-click="vm.confirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+         - 
+        <a class="btn btn-default btn-sm" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+      </rd-widget-header>
+      
+      <rd-widget-body classes="xlarge no-padding">
+        <div class="table-responsive">
+          <table class="table">
+						<thead>
+              <th width="1%">
+                <checkbox-list-header table-check="vm.tableCheck" ></checkbox-list-header>
+              </th>
+							<th width="35%" ng-bind="'global_username' | translate"></th>
+							<th width="40%" ng-bind="'global_name' | translate"></th>
+              <th width="9% " ng-bind="'global_enabled' | translate" class="text-center"></th>
+							<th width="15%" ng-bind="'global_createdDate' | translate" class="text-center"></th>
+						</thead>
+            <tbody>
+              <tr ng-repeat="u in vm.userList">  <!--ui-sref="user-detail({id: u.id})"-->
+                <td>
+                    <checkbox-list-item item-id="u.id" checkboxes="vm.tableCheck"></table-check-item>
+                </td>
+                <td ng-bind="u.username" ui-sref="user-detail({id: u.id})"></td>
+                <td ng-bind="u.fullName" ui-sref="user-detail({id: u.id})"></td>
+                <td class="text-center" ui-sref="user-detail({id: u.id})">
+                  <span class="text-success" ng-show="u.enabled"><i class="fa fa-check"></i></span>
+                  <span class="text-danger" ng-show="u.enabled == false"><i class="fa fa-times"></i></span>
+                </td>
+                <td ng-bind="u.createdAt | date: 'MM/dd/yyyy'" ui-sref="user-detail({id: u.id})" class="text-center"></td>
+              </tr>  
+              <!--<tr><td>RDVMPC001</td><td>238.103.133.37</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDVMPC002</td><td>68.66.63.170</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDVMPC003</td><td>76.117.212.33</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
+              <tr><td>RDPHPC001</td><td>91.88.224.5</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDESX001</td><td>197.188.15.93</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDESX002</td><td>168.85.154.251</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDESX003</td><td>209.25.191.61</td><td><span tooltip="Server Down!" class="text-danger"><i class="fa fa-warning"></i></span></td></tr>
+              <tr><td>RDESX004</td><td>252.37.192.235</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDTerminal01</td><td>139.71.18.207</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>
+              <tr><td>RDTerminal02</td><td>136.80.122.212</td><td><span tooltip="Could not connect!" class="text-warning"><i class="fa fa-flash"></i></span></td></tr>
+              <tr><td>RDDomainCont01</td><td>196.80.245.33</td><td><span class="text-success"><i class="fa fa-check"></i></span></td></tr>-->
+            </tbody>
+          </table>
+        </div>      
+      </rd-widget-body>
+      <rd-widget-footer>
+        <ul class="pagination pagination-sm pull-right">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </rd-widget-footer>
+    </rd-widget>
+  </div>
+</div>

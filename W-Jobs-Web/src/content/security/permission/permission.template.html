@@ -1,0 +1,55 @@
+<page-title title="'securityPermission_title'| translate" ng-init="vm.init()"></page-title> 
+
+<div class="row">
+  <div class="col-lg-12">
+    <rd-widget>
+      <rd-widget-header icon="fa fa-lock" title="{{'global_permissionList' | translate}}">
+        <a class="btn btn-default btn-sm" role="button" ui-sref="permission-detail({id : ''})"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a class="btn btn-default btn-sm" role="button" ng-click="vm.confirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+         - 
+        <a class="btn btn-default btn-sm" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+      </rd-widget-header>
+      <rd-widget-body classes="xlarge no-padding">
+        <div class="table-responsive">
+          <table class="table">
+						<thead>
+							<th width="1%">
+                <checkbox-list-header table-check="vm.tableCheck"></checkbox-list-header>
+              </th>
+							<th width="30%" ng-bind="'global_name' | translate"></th>
+							<th width="45%" ng-bind="'global_description' | translate"></th>
+              <th width="9% " ng-bind="'global_enabled' | translate" class="text-center"></th>
+							<th width="15%" ng-bind="'global_createdDate' | translate" class="text-center"></th>
+						</thead>
+            <tbody>
+              <tr ng-repeat="p in vm.permissionList">
+								<td>
+                  <checkbox-list-item item-id="p.id" checkboxes="vm.tableCheck"></table-check-item>
+                </td>
+                <td ng-bind="p.name[$root.lang]" ui-sref="permission-detail({id: p.id})"></td>
+                <td ng-bind="p.description[$root.lang]" ui-sref="permission-detail({id: p.id})"></td>
+                <td class="text-center" ui-sref="permission-detail({id: p.id})">
+                  <span class="text-success" ng-show="p.enabled"><i class="fa fa-check"></i></span>
+                  <span class="text-danger" ng-show="p.enabled == false"><i class="fa fa-times"></i></span>
+                </td>
+                <td class="text-center" ng-bind="p.createdAt | date: 'MM/dd/yyyy'" ui-sref="permission-detail({id: p.id})"></td>
+              </tr>  
+            </tbody>
+          </table>
+        </div>      
+      </rd-widget-body>
+      <rd-widget-footer>
+        <ul class="pagination pagination-sm pull-right">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </rd-widget-footer>
+    </rd-widget>
+  </div>
+</div>

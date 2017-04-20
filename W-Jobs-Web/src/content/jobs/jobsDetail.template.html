@@ -1,0 +1,174 @@
+<page-title title="'jobDetail_title'| translate" ng-init="vm.init()"></page-title> 
+
+<div class="row page-top-bar">
+	<div class="col-xs-12 text-right">
+		
+		<span class="bar-section">
+			Published Date: <span> 01/04/2017 </span>
+		</span>
+		
+		<span class="bar-section">
+			<a role="button" data-toggle="modal" data-target="#myModal">
+			<i class="fa fa-share-alt" aria-hidden="true"></i>
+			</a>
+		</span>
+
+		<span class="bar-section">
+			<a class="" role="button">
+				<i class="fa fa-bars"></i>
+				</a>
+		</span>
+		
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+
+		<form name="form" class="form" ng-submit="vm.save(form, vm.job)" autocomplete="off" novalidate>
+
+			<!--Title --> 
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.title.$invalid]">
+					<label for="title" ng-bind="'global_title' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.job.title" 
+								class="form-control" 
+								id="title" 
+								name="title" 
+								maxlength="100"
+								max="100"
+								required>
+					</div>
+				</div>
+			</div>
+
+			<br><br>
+
+			<!--Job Description --> 
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-6 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.jobDescription.$invalid]">
+					<label for="jobDescription" ng-bind="'global_jobDescription' | translate"> <i class="required">*</i></label>
+					<div>
+						<textarea
+								ng-model="vm.job.description" 
+								class="form-control" 
+								id="jobDescription" 
+								name="jobDescription" 
+								maxlength="1000"
+								max="1000"
+								rows="8"
+								cols="20"
+								required>
+						</textarea>
+					</div>
+				</div>
+			</div>
+
+			<br><br><br><br>
+
+			<!-- List -->
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-6 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.jobDescription.$invalid]">
+					<label for="jobDescription"> 
+						<span>{{'global_lists' | translate}}</span>
+						<span class="small text-ligth">{{'jobDetail_forList' | translate}}</span>
+					</label>
+				</div>
+			</div>
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.list1.$invalid]">
+					<div>
+						<input type="text" 
+								ng-init="vm.job.lists = []"
+								ng-model="vm.job.lists[0].title" 
+								class="form-control" 
+								id="title" 
+								name="title" 
+								maxlength="100"
+								max="100"
+								required>
+					</div>
+				</div>
+				<u class="small text-ligth" style="line-height: 35px;" ng-click="">{{'jobDetail_removeThisSection' | translate}}</u>
+			</div>
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-6 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.list1.$invalid]">
+					<div class="editable" 
+							style="height: 240px; overflow-x: auto;"
+							contenteditable="true"
+							ng-model="vm.job.lists[0].list"
+							ng-init="vm.job.lists[0].list = '<ul><li></li></ul>'"
+							name="list1"
+							strip-br="false"
+							strip-tags="false"
+							select-non-editable="false">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<a class="btn btn-default" 
+						role="button" 
+						ng-click=""
+						ng-bind="'jobDetail_addAList' | translate">
+					</a>
+				</div>
+			</div>
+
+			<br><br><br><br>
+
+			<!--Closing --> 
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-6 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.closing.$invalid]">
+					<label for="closing">
+						<span>{{'jobDetail_closing' | translate}}</span>
+						<span class="small text-ligth"> ({{'global_optional' | translate}})</span>
+					</label>
+					<div>
+						<textarea
+								ng-model="vm.job.closing" 
+								class="form-control" 
+								id="closing" 
+								name="closing" 
+								maxlength="500"
+								max="500"
+								rows="8"
+								cols="20">
+						</textarea>
+					</div>
+				</div>
+			</div>
+
+			<br><br>
+
+			<!-- Published -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4">
+					<label for="published" ng-bind="'global_published' | translate"></label>
+					<div>
+						<input type="checkbox"
+								ng-init="vm.job.published = false"
+								ng-model="vm.job.published" 
+								id="published" 
+								name="published" 
+								>
+					</div>
+				</div>
+			</div>
+
+			<divider-line></divider-line>
+
+			<div class="row">
+				<div class="col-sm-12 text-right cancel-ok-button">
+					<cancel-ok-button submitted="vm.submitted"></cancel-ok-button>		
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<job-modal-social-network job-id="vm.id"></job-modal-social-network>

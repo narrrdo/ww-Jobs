@@ -1,0 +1,64 @@
+<page-title title="'candidateDetail_title'| translate" ng-init="vm.init()"></page-title> 
+
+<form name="form" class="form" ng-submit="vm.save(form, vm.candidate)" autocomplete="off" novalidate>
+
+	<!--Name --> 
+	<div class="row"> 
+		<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.name.$invalid]">
+			<label for="name" ng-bind="'global_name' | translate"> <i class="required">*</i></label>
+			<div>
+				<input type="text" 
+						ng-model="vm.candidate.name" 
+						class="form-control" 
+						id="name" 
+						name="name" 
+						maxlength="50"
+						max="50"
+						required>
+			</div>
+		</div>
+	</div>
+
+	<!--Last Name --> 
+	<div class="row"> 
+		<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.lastName.$invalid]">
+			<label for="lastName" ng-bind="'global_lastName' | translate"> <i class="required">*</i></label>
+			<div>
+				<input type="text" 
+						ng-model="vm.candidate.lastName" 
+						class="form-control" 
+						id="lastName" 
+						name="lastName" 
+						maxlength="50"
+						max="50"
+						required>
+			</div>
+		</div>
+	</div>
+
+	<!--Email --> 
+	<div class="row"> 
+		<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.email.$invalid]">
+			<label for="email" ng-bind="'global_email' | translate"> <i class="required">*</i></label>
+			<div>
+				<input type="email" 
+						ng-model="vm.candidate.email" 
+						class="form-control" 
+						id="email" 
+						name="email" 
+						maxlength="50"
+						max="50"
+						required>
+			</div>
+		</div>
+	</div>
+
+	<divider-line></divider-line>
+
+			<div class="row">
+				<div class="col-sm-12 text-right cancel-ok-button">
+					<cancel-ok-button submitted="vm.submitted"></cancel-ok-button>		
+				</div>
+			</div>
+
+</form>

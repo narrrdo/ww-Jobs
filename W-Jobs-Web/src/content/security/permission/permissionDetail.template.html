@@ -1,0 +1,108 @@
+<page-title title="'securityPermissionDetail_title'| translate" ng-init="vm.init()"></page-title>
+
+<div class="row">
+	<div class="col-xs-12">
+
+		<form name="form" class="form" ng-submit="vm.save(form, vm.permission)" autocomplete="off" novalidate>
+
+			<!--Name En -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.nameEn.$invalid]">
+					<label for="nameEn" ng-bind="'global_name_en' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.permission.name.en" 
+								class="form-control" 
+								id="nameEn" 
+								name="nameEn" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Name Es -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.nameEs.$invalid]">
+					<label for="nameEs" ng-bind="'global_name_es' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.permission.name.es" 
+								class="form-control" 
+								id="nameEs" 
+								name="nameEs" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+			
+
+			<!--Description En -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.descriptionEn.$invalid]">
+					<label for="descriptionEn" ng-bind="'global_description_en' | translate"> <i class="required">*</i></label>
+					<div>
+							<textarea ng-model="vm.permission.description.en" 
+								class="form-control" 
+								id="descriptionEn" 
+								name="descriptionEn" 
+								maxlength="100"
+								max="100"
+								required
+								cols="200"
+								rows="5">
+							</textarea>
+					</div>
+				</div>
+			</div>
+
+			<!--Description Es -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.descriptionEs.$invalid]">
+					<label for="descriptionEs" ng-bind="'global_description_es' | translate"> <i class="required">*</i></label>
+					<div>
+						<textarea ng-model="vm.permission.description.es" 
+								class="form-control" 
+								id="descriptionEs" 
+								name="descriptionEs" 
+								maxlength="100"
+								max="100"
+								required
+								cols="200"
+								rows="5">
+							</textarea>
+					</div>
+				</div>
+			</div>
+
+			<!-- Enabled -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4">
+					<label for="enabled" ng-bind="'global_enabled' | translate"></label>
+					<div>
+						<input type="checkbox" 
+								ng-model="vm.permission.enabled" 
+								id="enabled" 
+								name="enabled" 
+								ng-init="vm.permission.enabled = false"
+								>
+					</div>
+				</div>
+			</div>
+
+			<divider-line></divider-line>
+
+			<div class="row">
+				<div class="col-sm-12 text-right cancel-ok-button">
+					<cancel-ok-button submitted="vm.submitted"></cancel-ok-button>		
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>

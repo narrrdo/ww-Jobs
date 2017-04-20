@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>W-Jobs</title>
+  <!-- STYLES -->
+  <!-- build:css lib/css/main.min.css -->
+  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!--<link rel="stylesheet" type="text/css" href="css/rdash.css">-->
+  <link rel="stylesheet" type="text/css" href="src/assets/css/index.css">
+  <!-- endbuild -->
+  <!-- SCRIPTS -->
+  <!-- build:js lib/js/main.min.js -->
+  <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-translate/angular-translate.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-resource/angular-resource.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+  <script type="text/javascript" src="../bower_components/angular-contenteditable/angular-contenteditable.js"></script>
+  <script type="text/javascript" src="/src/assets/js/constants/paths.js"></script>
+  <script type="text/javascript" src="/src/assets/js/constants/components.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <script src="/src/assets/js/services/locale/localeService.js"></script>
+  <!-- endbuild -->
+
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- inject:js -->
+  <!-- endinject -->
+
+  <!-- Custom Scripts -->
+  <!--<script type="text/javascript" src="js/dashboard.min.js"></script> -->
+</head>
+<body ng-controller="IndexController">
+  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+
+    <!-- Sidebar -->
+    <side-bar toggle="toggle"></side-bar>
+    <!-- End Sidebar -->
+
+    <div id="content-wrapper">
+      <div class="page-content">
+
+        <!-- Header Bar -->
+        <header-bar></header-bar>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        <div ui-view></div>
+
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->
+</body>
+</html>

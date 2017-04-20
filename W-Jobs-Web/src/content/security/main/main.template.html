@@ -1,0 +1,36 @@
+<page-title title="'securityMain_title'| translate"></page-title> 
+
+<div class="row">
+	<div ui-sref="user" class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue-ligth pull-left">
+					<i class="fa fa-user"></i>
+				</div>
+				<!--<div class="title">80</div>
+				<div class="comment">Users</div>-->
+				<div class="one-block" ng-bind="'securityUser_title' | translate"></div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div ui-sref="role" class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue-ligth pull-left">
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="one-block" ng-bind="'securityRole_title' | translate"></div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div ui-sref="permission" class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue-ligth pull-left">
+					<i class="fa fa-unlock-alt"></i>
+				</div>
+				<div class="one-block" ng-bind="'securityPermission_title' | translate"></div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>

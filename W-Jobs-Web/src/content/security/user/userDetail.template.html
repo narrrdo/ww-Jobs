@@ -1,0 +1,160 @@
+<page-title title="'securityUserDetail_title'| translate" ng-init="vm.init()"></page-title>
+
+<div class="row">
+	<div class="col-xs-12">
+
+		<form name="form" class="form" ng-submit="vm.save(form, vm.user)" autocomplete="off" novalidate>
+
+			<!--Username --> 
+			<div class="row"> 
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.username.$invalid]">
+					<label for="username" ng-bind="'global_username' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.user.username" 
+								class="form-control" 
+								id="username" 
+								name="username" 
+								maxlength="50"
+								max="50"
+								required
+								ng-disabled="vm.id"
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Name -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.name.$invalid]">
+					<label for="name" ng-bind="'global_name' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.user.firstname" 
+								class="form-control" 
+								id="name" 
+								name="name" 
+								ng-disabled="spaec.permId != null"
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Last Name -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.lastName.$invalid]">
+					<label for="lastName" ng-bind="'global_lastName' | translate"> <i class="required">*</i></label>
+					<div>
+						<input type="text" 
+								ng-model="vm.user.lastname" 
+								class="form-control" 
+								id="lastName" 
+								name="lastName" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!--Password -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.password.$invalid]">
+					<label for="password" ng-bind="'global_password' | translate"><i class="required">*</i></label>
+					<div>
+						<input type="password" 
+								ng-model="vm.user.password" 
+								class="form-control" 
+								id="password" 
+								name="password" 
+								maxlength="50"
+								max="50"
+								ng-required="!vm.id"
+								>
+					</div>
+				</div>
+			</div>
+
+			<!-- Email -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.email.$invalid]">
+					<label for="email" ng-bind="'global_email' | translate"><i class="required">*</i></label>
+					<div>
+						<input type="email" 
+								ng-model="vm.user.email" 
+								class="form-control" 
+								id="email" 
+								name="email" 
+								maxlength="50"
+								max="50"
+								required
+								>
+					</div>
+				</div>
+			</div>
+
+			<!-- Language -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.locale.$invalid]">
+					<label for="locale" ng-bind="'global_language' | translate"> <i class="required">*</i></label>
+					<div>
+						<select class="form-control" 
+					    ng-model="vm.user.locale" 
+					    ng-selected="vm.user.locale" 
+					    name="locale"
+					    required>
+							<option value="" selected  disabled>Select a language ...</option>
+							<option value="en" ng-bind="'global_english' | translate"></option>
+							<option value="es" ng-bind="'global_spanish' | translate"></option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Role -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.role.$invalid]">
+					<label for="role" ng-bind="'global_role' | translate"> <i class="required">*</i></label>
+					<div>
+						<select class="form-control" 
+					    ng-model="vm.user.role.id" 
+					    ng-selected="vm.user.role.id" 
+					    ng-options="r.id as r.name[$root.lang] for r in vm.roleList" 
+					    name="role"
+					    required>
+							<option value="" selected  disabled>Select a role ...</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Enabled -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4">
+					<label for="enabled" ng-bind="'global_enabled' | translate">Enabled</label>
+					<div>
+						<input type="checkbox" 
+								ng-model="vm.user.enabled" 
+								id="enabled" 
+								name="enabled"
+								ng-init="vm.user.enabled = false"
+								>
+					</div>
+				</div>
+			</div>
+
+			<divider-line></divider-line>
+
+			<div class="row">
+				<div class="col-sm-12 text-right cancel-ok-button">
+					<cancel-ok-button submitted="vm.submitted"></cancel-ok-button>		
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>

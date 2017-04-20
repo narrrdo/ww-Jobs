@@ -1,0 +1,52 @@
+<page-title title="'candidate_title'| translate" ng-init="vm.init()"></page-title> 
+
+<div class="row">
+  <div class="col-lg-12">
+    <rd-widget>
+      
+      <rd-widget-header icon="fa fa-list-alt" title="{{'global_candidateList' | translate}}">
+        <a class="btn btn-default btn-sm" role="button" ui-sref="candidate-detail({id : ''})"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a class="btn btn-default btn-sm" role="button" ng-click="vm.confirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+         - 
+        <a class="btn btn-default btn-sm" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+      </rd-widget-header>
+      
+      <rd-widget-body classes="xlarge no-padding">
+        <div class="table-responsive">
+          <table class="table">
+						<thead>
+              <th width="1%">
+                <checkbox-list-header table-check="vm.tableCheck" ></checkbox-list-header>
+              </th>
+							<th width="44%" ng-bind="'global_name' | translate"></th>
+							<th width="30%" ng-bind="'global_email' | translate"></th>
+							<th width="15%" ng-bind="'global_createdDate' | translate" class="text-center"></th>
+						</thead>
+            <tbody>
+              <tr ng-repeat="c in vm.candidateList">
+                <td>
+                    <checkbox-list-item item-id="c.id" checkboxes="vm.tableCheck"></table-check-item>
+                </td>
+                <td ng-bind="c.fullName" ui-sref="candidate-detail({id: c.id})"></td>
+                <td ng-bind="c.email" ui-sref="candidate-detail({id: c.id})"></td>
+                <td class="text-center" ng-bind="c.createdAt | date: 'MM/dd/yyyy'" ui-sref="candidate-detail({id: c.id})"></td>
+              </tr>  
+            </tbody>
+          </table>
+        </div>      
+      </rd-widget-body>
+      <rd-widget-footer>
+        <ul class="pagination pagination-sm pull-right">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </rd-widget-footer>
+    </rd-widget>
+  </div>
+</div>

@@ -5,15 +5,17 @@ var Candidate = require('../../domain/candidate');
 
 var _module = {};
 
-_module.execute = function(){
+_module.execute = function(id){
 
 	var resp = new Promise(function(resolve, reject){
 
-		Candidate.find({}, {resume : 0}).sort({'name' : 'asc'}).exec(function(error, docs) {
+		Candidate.findById(id, {'resume.file' : 1}).exec(function(error, doc){
 
 			if(error) reject(error);
+
+			var res = doc.resume.file;
 			
-			resolve(docs);
+			resolve(res);
 		});
 	});
 

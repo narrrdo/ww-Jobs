@@ -9,11 +9,18 @@ _module.execute = function(id){
 
 	var resp = new Promise(function(resolve, reject){
 
-		Candidate.findById(id).exec(function(error, doc){
+		Candidate.findById(id, {'resume.file' : 0}).exec(function(error, doc){
 
 			if(error) reject(error);
 
-			resolve(doc);
+			var res = {};
+			res.name = doc.name;
+			res.lastName = doc.lastName;
+			res.email = doc.email;
+			res.tel = doc.tel;
+			res.hasResume = doc.resume.text.length > 0;
+				
+			resolve(res);
 		});
 	});
 

@@ -33,7 +33,8 @@
     "angular-translate-loader-static-files": "^2.15.1",
     "angular-local-storage": "^0.5.2",
     "angular-jwt": "0.1.5",
-    "angular-contenteditable": "^0.3.8"
+    "angular-contenteditable": "^0.3.8",
+    "angular-file-upload": "^2.5.0"
   },
   "repository": {
     "type": "git",

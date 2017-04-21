@@ -5,11 +5,11 @@ var Jobs = require('../../domain/jobs');
 
 var _module = {};
 
-_module.execute = function(id, job){
+_module.execute = function(id, job) {
 
-	var resp = new Promise(function(resolve, reject){
+	var resp = new Promise(function(resolve, reject) {
 
-		Jobs.findById(id).exec(function(error, doc){
+		Jobs.findById(id).exec(function(error, doc) {
 
 			if(error) return reject(error);
 
@@ -24,7 +24,7 @@ _module.execute = function(id, job){
 				doc.publishedDate = new Date().toISOString();
 			}
 
-			doc.save(function(error){
+			doc.save(function(error) {
 
 				if(error) reject(error);
 			});

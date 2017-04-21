@@ -17,9 +17,21 @@ var Candidate = new Schema({
         required: true,
         maxlength: 50
 		},
+    tel: { 
+      type: String,
+      required: true
+    },
     email: {
       type: String,
       required: true
+    },
+    resume : {
+      file : {
+        type: Buffer
+      },
+      text : {
+        type: String,
+      }
     }
 },
 {
@@ -30,7 +42,8 @@ var Candidate = new Schema({
 Candidate.plugin(mongooseHidden);
 Candidate.plugin(deepPopulate);
 
-Candidate.virtual('fullName').get(function(){
+Candidate.virtual('fullName').get(function() {
+
     return `${this.name} ${this.lastName}`;
 });
 

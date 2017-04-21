@@ -1,6 +1,6 @@
 <page-title title="'candidateDetail_title'| translate" ng-init="vm.init()"></page-title> 
 
-<form name="form" class="form" ng-submit="vm.save(form, vm.candidate)" autocomplete="off" novalidate>
+<form name="form" class="form" nv-file-drop uploader="vm.uploader" ng-submit="vm.save(form, vm.candidate)" autocomplete="off" novalidate>
 
 	<!--Name --> 
 	<div class="row"> 
@@ -36,6 +36,23 @@
 		</div>
 	</div>
 
+	<!--Tel --> 
+	<div class="row"> 
+		<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.tel.$invalid]">
+			<label for="tel" ng-bind="'global_tel' | translate"> <i class="required">*</i></label>
+			<div>
+				<input type="text" 
+						ng-model="vm.candidate.tel" 
+						class="form-control" 
+						id="tel" 
+						name="tel" 
+						maxlength="10"
+						max="10"
+						required>
+			</div>
+		</div>
+	</div>
+
 	<!--Email --> 
 	<div class="row"> 
 		<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.email.$invalid]">
@@ -53,7 +70,29 @@
 		</div>
 	</div>
 
-	<divider-line></divider-line>
+	<div class="row"> 
+		<div class="col-sm-7 col-md-5 col-lg-4" >
+			<div class="resume-upload  my-drop-zone" ng-click="vm.clickUpload()" nv-file-drop nv-file-over uploader="vm.uploader">
+				<div >	
+					<i class="fa fa-file-text icon" aria-hidden="true" ng-hide="vm.document.name"></i>
+					<i class="fa fa-file-pdf-o icon" aria-hidden="true" ng-show="vm.document.name"></i>
+					<span class="text" ng-hide="vm.document.name">Upload your resume</span>
+					<span class="text" ng-show="vm.document.name" ng-bind="vm.document.name"></span>
+				</div>
+				<input type="file" id="uploadBtn" ng-show="false" nv-file-select uploader="vm.uploader" accept=".pdf"/>
+			</div>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row"> 
+		<div class="col-xs-12">
+			<divider-line></divider-line>
+		</div>
+	</div>
+
+	
 
 			<div class="row">
 				<div class="col-sm-12 text-right cancel-ok-button">

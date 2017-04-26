@@ -159,6 +159,21 @@
 				</div>
 			</div>
 
+			<!-- Is Open -->
+			<div class="row">
+				<div class="form-group col-sm-7 col-md-5 col-lg-4">
+					<label for="isOpen" ng-bind="'global_isOpen' | translate"></label>
+					<div>
+						<input type="checkbox"
+								ng-init="vm.job.isOpen = false"
+								ng-model="vm.job.isOpen" 
+								id="isOpen" 
+								name="isOpen" 
+								>
+					</div>
+				</div>
+			</div>
+
 			<divider-line></divider-line>
 
 			<div class="row">
@@ -171,4 +186,8 @@
 	</div>
 </div>
 
-<job-modal-social-network job-id="vm.id"></job-modal-social-network>
+<job-modal-social-network 
+	job-id="vm.id" 
+	social-network="vm.job.socialNetwork"
+	load-function="vm.loadJob">
+</job-modal-social-network>

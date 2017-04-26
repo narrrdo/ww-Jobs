@@ -9,9 +9,9 @@ angular
 		bindings: {}
 });
 
-Controller.$inject = ['$translate', 'roleDataService'];
+Controller.$inject = ['$translate', 'roleDataService','toastr'];
 
-function Controller ($translate, roleDataService) {
+function Controller ($translate, roleDataService, toastr) {
 
 	var vm = this;
 	
@@ -51,8 +51,9 @@ function Controller ($translate, roleDataService) {
 		
 		} else {
 
-			alert('Debe seleccionar un Rol.');
-
+			$translate('securityRole_delete_warning_selectRole').then(function(msg){
+				toastr.warning(msg);
+			});
 		}
 	}
 
@@ -66,11 +67,17 @@ function Controller ($translate, roleDataService) {
 
 			roleDataService.delete({id : value}).$promise.then(function(role){
 					
+				$translate('securityRole_delete_ok').then(function(msg){
+					toastr.success(msg);
+				});
+
 				vm.loadRoles();
 
 			}).catch(function(error) {
 					
-				alert(error);
+				$translate('securityRole_delete_error').then(function(msg){
+					toastr.success(msg);
+				});
 			});
 		});
 	}

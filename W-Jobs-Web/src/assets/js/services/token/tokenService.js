@@ -5,9 +5,9 @@
     .module('app')
     .factory('tokenService', service);
 
-  service.$inject = ['localStorageService','jwtHelper','authManager'];
+  service.$inject = ['localStorageService','jwtHelper','authManager','$rootScope'];
 
-  function service(localStorageService, jwtHelper, authManager) {
+  function service(localStorageService, jwtHelper, authManager, $rootScope) {
 
 		var vm = this;
 		var resp = {};

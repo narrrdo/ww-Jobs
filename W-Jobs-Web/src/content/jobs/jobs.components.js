@@ -9,9 +9,9 @@
 			bindings: {}
 	});	
 			
-	Controller.$inject = ['jobDataService'];
+	Controller.$inject = ['jobDataService', '$translate','toastr'];
 			
-	function Controller (jobDataService) {
+	function Controller (jobDataService, $translate, toastr) {
 
 		var vm = this;
 		
@@ -48,11 +48,11 @@
 
 					vm.delete();
 				}
-			
 			} else {
 
-				alert('Debe seleccionar un Job.');
-
+				$translate('job_delete_warning_selectJob').then(function(msg){
+					toastr.warning(msg);
+				});
 			}
 		}
 
@@ -62,15 +62,19 @@
 
 			angular.forEach(list, function(value, key) {
 
-				console.log(value);
-
 				jobDataService.delete({id : value}).$promise.then(function(job){
 						
+					$translate('job_delete_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					vm.loadJobs();
 
 				}).catch(function(error) {
 						
-					alert(error);
+					$translate('securityJob_delete_error').then(function(msg){
+						toastr.success(msg);
+					});
 				});
 			});
 		}

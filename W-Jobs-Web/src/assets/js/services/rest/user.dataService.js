@@ -5,10 +5,10 @@
     .module('app')
     .factory('userDataService', service);
 
-  service.$inject = ['$resource'];
+  service.$inject = ['$resource','API_END_POINT'];
 
-  function service($resource) {
-    return $resource('http://localhost:3000/users/:id', { id: '@Id' }, {
+  function service($resource, API_END_POINT) {
+    return $resource(API_END_POINT + 'users/:id', { id: '@Id' }, {
       
       update: {
         method: 'PUT'

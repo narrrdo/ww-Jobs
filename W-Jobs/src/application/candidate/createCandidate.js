@@ -11,12 +11,17 @@ _module.execute = function(candidate, file){
 
   var resp = new Promise(function(resolve, reject){
 
-  pdfToText.convert(file.buffer).then(function(resumeText){
+  var p = (file) ? pdfToText.convert(file.buffer) : Promise.resolve();
+  
+  p.then(function(resumeText) {
 
-    candidate.resume = {};
-    candidate.resume.file = file.buffer;
-    candidate.resume.text = resumeText;
-
+    if(resumeText) {
+      
+      candidate.resume = {};
+      candidate.resume.file = file.buffer;
+      candidate.resume.text = resumeText;
+    }
+      
     return Candidate.create(candidate);
 
   }).then(function(candidate){
@@ -26,6 +31,7 @@ _module.execute = function(candidate, file){
   }).catch(function(error){
 
     reject(new ConflictException(error.message));
+
   });
 });
   

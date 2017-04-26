@@ -9,17 +9,55 @@
 			bindings: {}
 	});	
 			
-	Controller.$inject = ['candidateDataService'];
+	Controller.$inject = ['candidateDataService', '$scope','$translate', 'toastr'];
 			
-	function Controller (candidateDataService) {
+	function Controller (candidateDataService, $scope, $translate, toastr) {
 
 		var vm = this;
 		vm.tableCheck = {};
 		vm.candidateList = {};
+		vm.filterExpanded = false;
+
+
+			// vm.searchParams = {name : 'test', resume:['rrr','test']};
+		vm.availableSearchParams = [
+			{ key: "name", name: "Name", placeholder: "Name..." },
+			{ key: "email", name: "Email", placeholder: "City..."},
+			{ key: "resume", name: "Resume", placeholder: "Resume...", allowMultiple: true, suggestedValues: ['Java', '.Net', 'CSS'] }
+		];
+
+		
+		vm.filertToggle = function() {
+
+			vm.filterExpanded = !vm.filterExpanded;
+		}
 
 		vm.init = function() {
 
 			vm.loadCandidates();
+		}
+
+		$scope.$on('advanced-searchbox:modelUpdated', function (event, model) {
+			
+			if(model.query || model.name || model.email || model.resume) {
+				
+				vm.search();
+
+			} else {
+
+				vm.loadCandidates();
+			}
+		});
+
+		vm.search = function() {
+
+			candidateDataService.search({q : vm.searchParams}).$promise.then(function(docs){
+
+				vm.candidateList = docs;
+				console.log(docs)
+			}).then(function(error){
+
+			});
 		}
 
 		vm.loadCandidates = function() {
@@ -48,8 +86,9 @@
 			
 			} else {
 
-				alert('Debe seleccionar un candidato.');
-
+				$translate('candidate_delete_warning_selectCandidate').then(function(msg) {
+					toastr.warning(msg);
+				});
 			}
 		}
 
@@ -59,15 +98,19 @@
 
 			angular.forEach(list, function(value, key) {
 
-				console.log(value);
-
 				candidateDataService.delete({id : value}).$promise.then(function(resp){
 						
+					$translate('candidate_delete_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					vm.loadCandidates();
 
 				}).catch(function(error) {
 						
-					alert(error);
+					$translate('candidate_delete_error').then(function(msg){
+						toastr.error(msg);
+					});
 				});
 			});
 		}

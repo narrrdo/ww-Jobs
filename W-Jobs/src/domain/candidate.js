@@ -31,6 +31,7 @@ var Candidate = new Schema({
       },
       text : {
         type: String,
+        default: ''
       }
     }
 },

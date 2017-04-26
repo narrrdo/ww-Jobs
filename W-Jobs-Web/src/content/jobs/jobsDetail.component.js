@@ -9,9 +9,9 @@
 			bindings: {}
 	});	
 			
-	Controller.$inject = ['$state','jobDataService'];
+	Controller.$inject = ['$state','jobDataService','toastr','$translate'];
 			
-	function Controller ($state, jobDataService) {
+	function Controller ($state, jobDataService, toastr, $translate) {
 
 		var vm = this;
 
@@ -46,22 +46,34 @@
 
 					jobDataService.save(job).$promise.then(function(j) {
 
-						console.log(j);
+						$translate('jobDetail_save_ok').then(function(msg){
+							toastr.success(msg);
+						});
+
 						$state.go(components.JOB.STATE);
 
 					}).catch(function(error){
-						alert(error);
+						
+						$translate('jobDetail_save_error').then(function(msg) {
+							toastr.success(msg);
+						});
 					});
 
 				} else {
 
 					jobDataService.update({id : vm.id }, job).$promise.then(function(j) {
 
-						console.log(j);
+						$translate('jobDetail_update_ok').then(function(msg){
+							toastr.success(msg);
+						});
+
 						$state.go(components.JOB.STATE);
 
 					}).catch(function(error){
-						alert(error);
+						
+						$translate('jobDetail_update_error').then(function(msg) {
+							toastr.error(msg);
+						});
 					});
 
 				}

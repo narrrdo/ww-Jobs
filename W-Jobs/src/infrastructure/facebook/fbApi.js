@@ -23,15 +23,16 @@ _module.sendPost = function(message) {
 
 				if(!res || res.error) {
 					console.log(!res ? 'error occurred' : res.error);
-					return;
+					return reject(res.error);
 				}
 
-				console.log('Post Id: ' + res.id);
+				resolve();
 			});
 
 		}).catch(function(error) {
 				
 				console.log(error);
+				reject(error);
 		});
 	});
 

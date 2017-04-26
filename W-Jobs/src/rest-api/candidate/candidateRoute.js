@@ -15,17 +15,19 @@ var GetResumeFile = require('../../application/candidate/getResumeFile');
 var storage = multer.memoryStorage()
 var upload = multer({ storage: storage })
 
-router.get('/', findAllCandidate);
-router.get('/:id', findCandidateById);
-router.get('/:id/resume/pdf', getResumeFile);
+router.get('/', auth.hasPermission(Permission.CANDIDATES_GET_ALL), findAllCandidate);
+router.get('/:id', auth.hasPermission(Permission.CANDIDATES_GET_DETAILS), findCandidateById);
+router.post('/', auth.hasPermission(Permission.CANDIDATES_ADD), upload.single('file'), createCandidate);
+router.put('/:id', auth.hasPermission(Permission.CANDIDATES_UPDATE), upload.single('file'), updateCandidate);
+router.delete('/:id', auth.hasPermission(Permission.CANDIDATES_DELETE), deleteCandidate);
 
-router.post('/', upload.single('file'), createCandidate);
-router.put('/:id', upload.single('file'), updateCandidate);
-router.delete('/:id', deleteCandidate);
+router.get('/:id/resume/pdf', getResumeFile); //auth.hasPermission(Permission.CANDIDATES_VIEW_RESUME)
 
 function findAllCandidate(req, res, next){
 
-  FindAllCandidate.execute().then(function(docs) {
+  var search = req.query.q;
+
+  FindAllCandidate.execute(search).then(function(docs) {
 
     res.json(docs);
 

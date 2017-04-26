@@ -16,33 +16,44 @@ angular
 
 		authManager.checkAuthOnRefresh();
 		authManager.redirectWhenUnauthenticated();
-		$transitions.onStart({},hasPermission);
+		$transitions.onStart({},hasStatePermission);
 		//hasPermission.$inject = ['$transition'];
 
-		function hasPermission($transition$) {
+		function hasStatePermission($transition$) {
 
 			var state = $transition$.$to();
 
 			if(state.data) {
 				
 				var routePermissions = state.data.permissions;
-				var userPermissions = tokenService.getPermissions();
-				var hasPermission = false;
-
-				routePermissions.forEach(function(item){
-
-					if(userPermissions.indexOf(permissions[item]) != -1) {
-
-						hasPermission = true;
-					}
-				});
-
-				if(!hasPermission) {
+				
+				if(!hasPermission(routePermissions)) {
 
 					tokenService.removeToken();
 					$state.go(components.LOGIN.STATE);
 				}
 			}
+		}
+
+		$rootScope.hasPermission = hasPermission;
+
+		function hasPermission(permList) {
+
+			var userPermissions = tokenService.getPermissions();
+			var hasPermission = false;
+			var permissoionsList;
+
+			permissoionsList = (_.isArray(permList)) ? permList  : [permList];
+
+			permissoionsList.forEach(function(item){
+
+			if(userPermissions.indexOf(permissions[item]) != -1) {
+
+					hasPermission = true;
+				}
+			});
+
+			return hasPermission;
 		}
 
 	}

@@ -4,7 +4,8 @@
 
   angular
       .module('app',['ui.bootstrap', 'ui.router', 'ngCookies','ngResource','pascalprecht.translate',
-                     'ngSanitize', 'LocalStorageModule','angular-jwt','contenteditable', 'angularFileUpload'])
+                     'ngSanitize', 'LocalStorageModule','angular-jwt','contenteditable', 'angularFileUpload',
+                     'angular-advanced-searchbox','toastr'])
       .controller('IndexController', ['$scope', '$cookieStore', IndexController]);
 
   function IndexController($scope, $cookieStore) {

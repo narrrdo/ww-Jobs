@@ -9,9 +9,9 @@ angular
 		bindings: {}
 });
 
-Controller.$inject = ['permissionDataService', 'localeService','$rootScope'];
+Controller.$inject = ['permissionDataService', 'localeService','$rootScope','$translate','toastr'];
 
-function Controller (permissionDataService, localeService, $rootScope) {
+function Controller (permissionDataService, localeService, $rootScope, $translate, toastr) {
 
 	var vm = this;
 	
@@ -22,7 +22,6 @@ function Controller (permissionDataService, localeService, $rootScope) {
 	vm.init = function() {
 
 		vm.loadPermission();
-
 	}
 
 	vm.loadPermission = function() {
@@ -40,40 +39,47 @@ function Controller (permissionDataService, localeService, $rootScope) {
 
 	vm.confirmDelete = function() {
 
-			var list = vm.tableCheck.getCheckedItems();
+		var list = vm.tableCheck.getCheckedItems();
 
-			if (list.length > 0) {
-				
-				var resp = confirm('Confirm');
-
-				if(resp) {
-
-					vm.delete();
-				}
+		if (list.length > 0) {
 			
-			} else {
+			var resp = confirm('Confirm');
 
-				alert('Debe seleccionar un permiso.');
+			if(resp) {
 
+				vm.delete();
 			}
-		}
+		
+		} else {
 
-		vm.delete = function() {
-
-			var list = vm.tableCheck.getCheckedItems();
-
-			angular.forEach(list, function(value, key) {
-
-				permissionDataService.delete({id : value}).$promise.then(function(permission){
-						
-					vm.loadPermission();
-
-				}).catch(function(error) {
-						
-					alert(error);
-				});
+			$translate('securityPermission_delete_warning_selectPermission').then(function(msg){
+				toastr.warning(msg);
 			});
 		}
+	}
+
+	vm.delete = function() {
+
+		var list = vm.tableCheck.getCheckedItems();
+
+		angular.forEach(list, function(value, key) {
+
+			permissionDataService.delete({id : value}).$promise.then(function(permission){
+					
+				$translate('securityPermission_delete_ok').then(function(msg){
+					toastr.success(msg);
+				});
+
+				vm.loadPermission();
+
+			}).catch(function(error) {
+					
+				$translate('securityPermission_delete_error').then(function(msg){
+					toastr.error(msg);
+				});
+			});
+		});
+	}
 
 }
 })(); 

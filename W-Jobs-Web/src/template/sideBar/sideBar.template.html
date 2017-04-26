@@ -2,27 +2,48 @@
 	<ul class="sidebar">
 		<li class="sidebar-main">
 			<a ng-click="vm.toggleSidebar()" ng-if="$root.isAuthenticated">
-				Dashboard
+				{{'global_menu' | translate}}
 				<span class="menu-icon glyphicon glyphicon-transfer"></span>
 			</a>
 		</li>
-		<li class="sidebar-title"><span>NAVIGATION</span></li>
-		<li class="sidebar-list" ng-if="$root.isAuthenticated">
-			<a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+		<!--<li class="sidebar-title">
+				<span>NAVIGATION</span>
+		</li>-->
+		<li class="sidebar-list" 
+			  ng-if="$root.isAuthenticated">
+			<a ui-sref="{{ vm.components.DASHBOARD.STATE }}">{{'dashboard_title' | translate}} 
+				<span class="menu-icon fa fa-tachometer"></span>
+			</a>
 		</li>
-		<li class="sidebar-list" ng-if="$root.isAuthenticated">
-			<a ui-sref="security">Security <span class="menu-icon fa fa-unlock"></span></a>
+		<li class="sidebar-list" 
+			  ng-if="$root.isAuthenticated && 
+					($root.hasPermission('USER_GET_ALL') ||
+					 $root.hasPermission('ROLE_GET_ALL') ||
+					 $root.hasPermission('PERMISSION_GET_ALL'))">
+			<a ui-sref="{{ vm.components.SECURITY_MAIN.STATE }}">{{'securityMain_title' | translate}}  
+				<span class="menu-icon fa fa-lock" style="font-size: 20px; text-align: center;"></span>
+			</a>
 		</li>
-		<li class="sidebar-list" ng-if="$root.isAuthenticated">
-			<a ui-sref="{{ vm.components.JOB.STATE }}">Jobs <span class="menu-icon fa fa-list-alt"></span></a>
+		<li class="sidebar-list" 
+			  ng-if="$root.isAuthenticated && $root.hasPermission('JOB_GET_ALL')">
+			<a ui-sref="{{ vm.components.JOB.STATE }}">{{'jobDetail_title_short' | translate}}  
+				<span class="menu-icon fa fa-list-alt"></span>
+			</a>
 		</li>
-		<li class="sidebar-list" ng-if="$root.isAuthenticated">
-			<a ui-sref="{{ vm.components.CANDIDATE.STATE }}">Candidates <span class="menu-icon fa fa-users"></span></a>
+		<li class="sidebar-list" 
+			  ng-if="$root.isAuthenticated && $root.hasPermission('CANDIDATES_GET_ALL')">
+			<a ui-sref="{{ vm.components.CANDIDATE.STATE }}">{{'candidate_title' | translate}}   
+				<span class="menu-icon fa fa-users"></span>
+			</a>
 		</li>
-		<li class="sidebar-list" ng-if="$root.isAuthenticated">
-			<a href="#/tables">Tables <span class="menu-icon fa fa-table"></span></a>
-		</li>
+		<!--<li class="sidebar-list" 
+			  ng-if="$root.isAuthenticated">
+			<a href="#/tables">Tables 
+				<span class="menu-icon fa fa-table"></span>
+			</a>
+		</li>-->
 	</ul>
+
 	<div class="sidebar-footer">
 		<div class="col-xs-4">
 			<a href="https://github.com/rdash/rdash-angular" target="_blank">

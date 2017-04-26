@@ -30,7 +30,7 @@ _module.post = function(message) {
 
 		request(options, function (error, response, body) {
 			
-			if (error) reject(error);
+			if (error) return reject(error);
 
 			resolve(body);
 			console.log(body);

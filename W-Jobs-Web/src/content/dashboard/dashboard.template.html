@@ -1,0 +1,121 @@
+<page-title title="'dashboard_title'| translate" ng-init="vm.init()"></page-title> 
+
+<!--<div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
+  <div class="col-xs-12">
+    <uib-alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+  </div>
+</div>-->
+
+<div class="row" ng-init="vm.init()">
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon green pull-left">
+					<i class="fa fa-users"></i>
+				</div>
+				<div class="title" ng-bind="vm.openJobList.length"></div>
+				<div class="comment">Opened Jobs</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon red pull-left">
+					<i class="fa fa-tasks"></i>
+				</div>
+				<div class="title" ng-bind="vm.publishedJobList.length">2</div>
+				<div class="comment">Published Jobs</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon orange pull-left">
+					<i class="fa fa-sitemap"></i>
+				</div>
+				<div class="title">3</div>
+				<div class="comment">New Candidates</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-3 col-md-6 col-xs-12">
+		<rd-widget>
+			<rd-widget-body>
+				<div class="widget-icon blue pull-left">
+					<i class="fa fa-support"></i>
+				</div>
+				<div class="title">1</div>
+				<div class="comment">New Referrals</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+      		<rd-widget-header icon="fa fa-list-ol" title="Opened Jobs">
+				
+      		</rd-widget-header>
+      		<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th width="70%" ng-bind="'global_title' | translate"></th>
+								<th width="30%" ng-bind="'global_createdDate' | translate" class="text-center"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="j in vm.openJobList">
+								<td ng-bind="j.title" ui-sref="job-detail({id: j.id})"></td>
+								<td ng-bind="j.createdAt | date: 'MM/dd/yyyy'" ui-sref="job-detail({id: j.id})" class="text-center"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa fa-th-list" title="Published Jobs">
+				
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th width="70%" ng-bind="'global_title' | translate"></th>
+								<th width="30%" ng-bind="'global_publishedDate' | translate" class="text-center"></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="j in vm.publishedJobList">
+								<td ng-bind="j.title" ui-sref="job-detail({id: j.id})"></td>
+								<td ng-bind="j.createdAt | date: 'MM/dd/yyyy'" ui-sref="job-detail({id: j.id})" class="text-center"></td>
+							</tr>
+						</tbody>
+					</table>	
+				</div>
+			</rd-widget-body>
+		<rd-widget>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+			<rd-widget-header icon="fa-cog fa-spin" title="Loading Directive">
+				<a href="http://tobiasahlin.com/spinkit/" target="_blank">SpinKit</a>
+			</rd-widget-header>
+			<rd-widget-body>
+				<rd-loading></rd-loading>
+			</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>

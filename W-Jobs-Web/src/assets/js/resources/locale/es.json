@@ -32,22 +32,77 @@
 	"global_jobDescription" : "Descripción de la posicion de trabajo",
 	"global_lists" : "Listas",
 	"global_optional" : "Ópcional",
+	"global_view" : "Ver",
+	"global_resume" : "Resume",
+	"global_isOpen" : "Esta abierto",
+	"global_menu" : "Menú",
+
+	"dashboard_title" : "Tablero",
 
 	"securityMain_title" : "Seguridad",
+
 	"securityUser_title" : "Usuarios",
+	"securityUser_delete_warning_selectUser" : "Debe seleccionar un usuario",
+	"securityUser_delete_ok" : "El usuario fue borrado exitosamente",
+	"securityUser_delete_error" : "Ocurrio un error al intentar borrar el usuario",
+	
 	"securityUserDetail_title" : "Detalle de Usuario",
+	"securityUserDetail_save_ok" : "El usuario fue guardado exitosamente",
+	"securityUserDetail_save_error" : "Ocurrio un error al intentar guardar el usuario",
+	"securityUserDetail_update_ok" : "El usuario fue actualizado exitosamente",
+	"securityUserDetail_update_error" : "Ocurrio un error al intentar actualizar el usuario",
+	
 	"securityRole_title" : "Roles",
+	"securityRole_delete_warning_selectRole" : "Debe seleccionar un rol.",
+	"securityRole_delete_ok" : "El rol fue borrado exitosamente",
+	"securityRole_delete_error" : "Ocurrio un error al intentar borrar el rol",
+
 	"securityRoleDetail_title" : "Detalle de Rol",
+	"securityRoleDetail_save_ok" : "El rol fue guardado exitosamente",
+	"securityRoleDetail_save_error" : "Ocurrio un error al intentar guardar el rol",
+	"securityRoleDetail_update_ok" : "El rol fue actualizado exitosamente",
+	"securityRoleDetail_update_error" : "Ocurrio un error al intentar actualizar el rol",
+
 	"securityPermission_title" : "Permisos",
+	"securityPermission_delete_warning_selectPermission" : "Debe seleccionar un permiso",
+	"securityPermission_delete_ok" : "El permiso fue borrado exitosamente",
+	"securityPermission_delete_error" : "Ocurrio un error al intentar borrar el permiso",
+
 	"securityPermissionDetail_title" : "Detalle de Permiso",
+	"securityPermissionDetail_save_ok" : "El permiso fue guardado exitosamente",
+	"securityPermissionDetail_save_error" : "Ocurrio un error al intentar guardar el permiso",
+	"securityPermissionDetail_update_ok" : "El permiso fue actualizado exitosamente",
+	"securityPermissionDetail_update_error" : "Ocurrio un error al intentar actualizar el permiso",
 
 	"job_title" : "Posiciones de Trabajos",
+	"jobDetail_title_short" : "Posiciones Trabajos",
+	"job_delete_warning_selectUser" : "Debe seleccionar una posicion de trabajo",
+	"job_delete_ok" : "La posicion de trabajo fue borrada exitosamente",
+	"job_delete_error" : "Ocurrio un error al intentar borrar la posicion de trabajo",
+
 	"jobDetail_title" : "Detalle de Posicion de Trabajo",
 	"jobDetail_forList": "(Para: requisito, responsabilidades, etc)",
 	"jobDetail_addAList": "Añadir una lista",
 	"jobDetail_removeThisSection": "Remover esta sección",
 	"jobDetail_closing": "Clausura",
+	"jobDetail_save_ok" : "La posición de trabajo fue guardado exitosamente",
+	"jobDetail_save_error" : "Ocurrio un error al intentar guardar la posición de trabajo",
+	"jobDetail_update_ok" : "La posión de trabajo fue actualizado exitosamente",
+	"jobDetail_update_error" : "Ocurrio un error al intentar actualizar la posición de trabajo",
+	"jobDetail_publishSocialNetwork_ok" : "Se publico la posición de trabajo exitosamente",
+	"jobDetail_publishSocialNetwork_error" : "Ocurrio un error al intentar publicar la posición de trabajo",
 
 	"candidate_title" : "Candidatos",
-	"candidateDetail_title" : "Detalle de los candidatos"
+	"candidate_delete_warning_selectCandidate" : "Debe seleccionar un candidato",
+	"candidate_delete_ok" : "El candidato fue borrado exitosamente",
+	"candidate_delete_error" : "Ocurrio un error al intentar borrar el candidato",
+
+	"candidateDetail_title" : "Detalle de los candidatos",
+	"candidateDetail_save_ok" : "El candidate fue guardado exitosamente",
+	"candidateDetail_save_error" : "Ocurrio un error al intentar guardar el candidato",
+	"candidateDetail_update_ok" : "El candidate fue actualizado exitosamente",
+	"candidateDetail_update_error" : "Ocurrio un error al intentar actualizar el candidato",
+	"candidate_uploadResume" : "Adjunte su resume",
+	"candidate_uploadResume_warning_format" : "El formato del resume debe ser en PDF",
+	"candidate_uploadResume_warning_size" : "El tamaño máximo del resume debe ser 2MB"
 }

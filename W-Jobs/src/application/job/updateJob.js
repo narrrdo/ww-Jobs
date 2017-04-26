@@ -9,7 +9,7 @@ _module.execute = function(id, job) {
 
 	var resp = new Promise(function(resolve, reject) {
 
-		Jobs.findById(id).exec(function(error, doc) {
+		Jobs.findById(id, {socialNetwork : 0}).exec(function(error, doc) {
 
 			if(error) return reject(error);
 
@@ -18,6 +18,7 @@ _module.execute = function(id, job) {
 			doc.closing = job.closing;
 			doc.lists = job.lists;
 			doc.published = job.published;
+			doc.isOpen = job.isOpen;
 
 			if(!doc.publishedDate && job.published) {
 				
@@ -27,9 +28,9 @@ _module.execute = function(id, job) {
 			doc.save(function(error) {
 
 				if(error) reject(error);
-			});
 
-			resolve(doc);
+				resolve(doc);
+			});
 		});
 	});
 

@@ -7,13 +7,15 @@
 			controller: Controller,		
 			controllerAs: "vm",
 			bindings: {
-				jobId : "="
+				jobId : "=",
+				socialNetwork : "=",
+				loadFunction : "="
 			}
 	});	
 			
-	Controller.$inject = ['jobDataService'];
+	Controller.$inject = ['jobDataService','$translate','toastr'];
 			
-	function Controller (jobDataService) {
+	function Controller (jobDataService, $translate, toastr) {
 
 		var vm = this;
 
@@ -26,11 +28,16 @@
 
 			jobDataService[social]({id : vm.jobId}).$promise.then(function(resp){
 
-				console.log(resp);
+				$translate('jobDetail_publishSocialNetwork_ok').then(function(msg){
+					toastr.success(msg);
+				});
 
-			}).catch(function(error){
-				console.log(error);
-				alert(error);
+				vm.loadFunction();
+
+			}).catch(function(error) {
+				$translate('jobDetail_publishSocialNetwork_error').then(function(msg){
+					toastr.error(msg);
+				});
 			});
 		}
 

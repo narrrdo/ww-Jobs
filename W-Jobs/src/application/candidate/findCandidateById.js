@@ -13,12 +13,14 @@ _module.execute = function(id){
 
 			if(error) reject(error);
 
+			var resume = doc.resume;
+
 			var res = {};
 			res.name = doc.name;
 			res.lastName = doc.lastName;
 			res.email = doc.email;
 			res.tel = doc.tel;
-			res.hasResume = doc.resume.text.length > 0;
+			res.hasResume = resume.text.length > 0;
 				
 			resolve(res);
 		});

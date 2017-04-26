@@ -33,7 +33,7 @@
 
 					permissionService.load();
 
-					$state.go(components.SECURITY_MAIN.STATE);
+					$state.go(components.DASHBOARD.STATE);
 
 				}).catch(function(error){
 					alert(error);

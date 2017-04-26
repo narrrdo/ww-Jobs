@@ -9,9 +9,9 @@ angular
 		bindings: {}
 });
 
-Controller.$inject = ['$translate', '$state', 'permissionDataService'];
+Controller.$inject = ['$translate', '$state', 'permissionDataService','toastr'];
 
-function Controller ($translate, $state, permissionDataService) {
+function Controller ($translate, $state, permissionDataService, toastr) {
 
 	var vm = this;
 	
@@ -44,20 +44,34 @@ function Controller ($translate, $state, permissionDataService) {
 
 				permissionDataService.save(permission).$promise.then(function(p){
 
+					$translate('securityPermissionDetail_save_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					$state.go(components.SECURITY_PERMISSION.STATE);
 
 				}).catch(function(error) {
-					console.log(error);
+						
+						$translate('securityPermissionDetail_save_error').then(function(msg) {
+							toastr.success(msg);
+						});
 				})
 				
 			} else {
 
 				permissionDataService.update({ id : vm.id}, permission).$promise.then(function(p){
 
+					$translate('securityPermissionDetail_update_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					$state.go(components.SECURITY_PERMISSION.STATE);
 
 				}).catch(function(error) {
-					console.log(error);
+					
+					$translate('securityPermissionDetail_update_error').then(function(msg) {
+							toastr.success(msg);
+						});
 				});
 			}
 		}

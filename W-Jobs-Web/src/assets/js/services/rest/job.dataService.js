@@ -5,23 +5,32 @@
     .module('app')
     .factory('jobDataService', service);
 
-  service.$inject = ['$resource'];
+  service.$inject = ['$resource','API_END_POINT'];
 
-  function service($resource) {
+  function service($resource, API_END_POINT) {
 
-    return $resource('http://localhost:3000/jobs/:id', { id: '@Id' }, {
-      
+    return $resource(API_END_POINT + 'jobs/:id', { id: '@Id' }, {
+      getOpenJobs: {
+        method: 'GET', 
+        url: API_END_POINT + 'jobs/open',
+        isArray: true
+      },
+      getPublishedJobs: {
+        method: 'GET', 
+        url: API_END_POINT + 'jobs/published',
+        isArray: true
+      },
       update: {
         method: 'PUT'
       },
       postLinkedin: {
         method: 'post',
-        url: 'http://localhost:3000/jobs/:id/linkedin',
+        url: API_END_POINT + 'jobs/:id/linkedin',
         params: {id: '@id'}
       },
       postFacebook: {
         method: 'post',
-        url: 'http://localhost:3000/jobs/:id/facebook',
+        url: API_END_POINT + 'jobs/:id/facebook',
         params: {id: '@id'}
       }
       

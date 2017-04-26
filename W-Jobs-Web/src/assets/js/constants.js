@@ -2,6 +2,6 @@
 
 angular
 	.module('app')
-	.constant();
+	.constant('API_END_POINT', 'http://localhost:3000/');
 
 })(); 

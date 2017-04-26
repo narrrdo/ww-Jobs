@@ -17,8 +17,9 @@ _module.execute = function(id){
 
 		}).then(function(){
 
+			var postedDate = {postedDate : new Date().toISOString()};
 			var where = {_id : id};
-			var set = {$push: {'socialNetwork.linkedin.postedDate' : new Date().toISOString()} };
+			var set = {$push: {'socialNetwork.linkedin' :  postedDate} };
 
 			return Jobs.update(where, set);
 

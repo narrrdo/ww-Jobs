@@ -9,43 +9,19 @@
 			bindings: {}
 	});	
 			
-	Controller.$inject = ['candidateDataService', '$state','FileUploader', '$timeout','$scope'];
+	Controller.$inject = ['candidateDataService', '$state','FileUploader', '$timeout','$scope','API_END_POINT','tokenService', 'toastr','$translate'];
 			
-	function Controller (candidateDataService, $state, FileUploader, $timeout,$scope) {
+	function Controller (candidateDataService, $state, FileUploader, $timeout,$scope, API_END_POINT, tokenService, toastr, $translate) {
 
 		var vm = this;
 
 		vm.id = $state.params.id;
 		vm.document = {};
 		vm.candidate = {};
+		vm.candidate.resume = {};
+		vm.candidate.resume.toUpdate = false;
 		
-		var ep = 'http://localhost:3000/candidates/';
-
-		vm.uploader = new FileUploader({
-				url: ep + ((vm.id) ? vm.id : ''),
-				formData : [vm.candidate],
-				method : vm.id ? 'PUT' : 'POST' 
-			});
-
-			vm.uploader.filters.push({
-				name: 'file-type',
-				fn: function(item /*{File|FileLikeObject}*/, options) {
-						
-						var resp = (item.type === "application/pdf");
-
-						return resp;
-				}
-			});
-
-			vm.uploader.filters.push({
-				name: 'file-size',
-				fn: function(item) {
-						
-						var resp = (item.size <= 2000000);
-
-						return resp;
-				}
-			});
+		vm.uploader = new FileUploader();
 
 		vm.init = function() {
 			
@@ -63,10 +39,10 @@
 				vm.candidate.lastName = candidate.lastName;
 				vm.candidate.tel = candidate.tel;
 				vm.candidate.email = candidate.email;
+				vm.candidate.hasResume = candidate.hasResume;
 
 			}).catch(function(error){
-				console.log(error);
-				alert(error);
+				
 			});
 		}
 
@@ -74,70 +50,61 @@
 
 			if(form.$valid) {
 
-				if(!vm.id) {
+				if(vm.uploader.queue[0]) {
 
 					vm.uploader.queue[0].upload();
 
 				} else {
 
-					if(vm.uploader.queue[0]) {
+					if(!vm.id) {
 
-						vm.uploader.queue[0].upload();
+						candidateDataService.save(vm.candidate).$promise.then(function(doc){
+
+							$translate('candidateDetail_save_ok').then(function(msg){
+								toastr.success(msg);
+							});
+
+							$state.go(components.CANDIDATE.STATE);
+
+						}).catch(function(error){
+							
+							$translate('candidateDetail_save_error').then(function(msg) {
+								toastr.success(msg);
+							});
+						});
 
 					} else {
 
 						candidateDataService.update({id : vm.id}, vm.candidate).$promise.then(function(doc){
 
+							$translate('candidateDetail_update_ok').then(function(msg){
+								toastr.success(msg);
+							});
+
 							$state.go(components.CANDIDATE.STATE);
 
 						}).catch(function(error){
-							alert(error);
+							
+							$translate('candidateDetail_update_error').then(function(msg) {
+								toastr.error(msg);
+							});
 						});
 					}
 				}
 			}
 		}
 
-		vm.clickUpload = function() {
+		vm.viewResume = function() {
 
-			// $timeout(function() { 
-			// 		$scope.$apply()
-					//document.querySelector('#uploadBtn').click();
-					document.getElementById('uploadBtn').click()   
-					//angular.element('#uploadBtn').trigger('click');
-				// },0)
+			window.open(API_END_POINT + 'candidates/'+ vm.id +'/resume/pdf','_blank', 
+					"width=1300, height=750, toolbar=no, menubar=no, location=no, directories=no, status=no, titlebar=no");
 		}
 
-		vm.uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
-            
-			if(filter.name === "file-type") {
-				alert('El resume debe ser en formato PDF');
-			}
+		vm.removeResume = function() {
 
-			if(filter.name === "file-size") {
-				alert('El tamaño del resume no puedeexeder 2MB.');
-			}
-
-		console.info('onWhenAddingFileFailed', item, filter, options);
-
-		};
-			
-		vm.uploader.onAfterAddingFile = function(fileItem) {
-					
-			vm.document = fileItem.file;
-						
-			console.info('onAfterAddingFile', fileItem);
-		};
-
-		vm.uploader.onSuccessItem = function(fileItem, response, status, headers) {
-			console.info('onSuccessItem', fileItem, response, status, headers);
-
-			$state.go(components.CANDIDATE.STATE);
-		};
-		vm.uploader.onErrorItem = function(fileItem, response, status, headers) {
-			console.info('onErrorItem', fileItem, response, status, headers);
-		};
-
+			vm.candidate.hasResume = false;
+			vm.candidate.toUpdateResume = true;
+		}
 
 	}
 })(); 

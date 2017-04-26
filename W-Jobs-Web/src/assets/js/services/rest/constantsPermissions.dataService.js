@@ -5,10 +5,10 @@
     .module('app')
     .factory('constantsPermissionsDataService', service);
 
-  service.$inject = ['$resource'];
+  service.$inject = ['$resource','API_END_POINT'];
 
-  function service($resource) {
-    return $resource('http://localhost:3000/constantsPermissions/:id', { id: '@Id' }, {
+  function service($resource, API_END_POINT) {
+    return $resource(API_END_POINT + 'constantsPermissions/:id', { id: '@Id' }, {
       
     });
   }

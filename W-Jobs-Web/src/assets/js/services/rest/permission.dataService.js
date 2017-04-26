@@ -5,11 +5,11 @@
     .module('app')
     .factory('permissionDataService', service);
 
-  service.$inject = ['$resource'];
+  service.$inject = ['$resource','API_END_POINT'];
 
-  function service($resource) {
+  function service($resource, API_END_POINT) {
 
-    return $resource('http://localhost:3000/permissions/:id', { id: '@Id' }, {
+    return $resource(API_END_POINT + 'permissions/:id', { id: '@Id' }, {
       
       update: {
         method: 'PUT'

@@ -38,6 +38,10 @@ var Job = new Schema({
 		publishedDate : {
 			type: Date
 		},
+    isOpen: {
+      type: Boolean,
+      required: true
+    },
     socialNetwork: {
       facebook : [{
         postedDate: {type: Date} 

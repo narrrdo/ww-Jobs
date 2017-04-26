@@ -52,28 +52,49 @@
 }
 
 
-.resume-upload {
+.resume-wrapper {
   border: 1px gray dashed; 
   text-align: center;
 }
 
-.resume-upload > div {
+.resume-wrapper .resume-upload {
   padding: 20px;
 }
 
-.resume-upload :hover {
+.resume-wrapper .view-remove {
+  padding: 15px 15px 0px 15px;
+}
+
+.resume-wrapper .view-remove .icon{
+  font-size: 30px; 
+  padding: 0px;
+}
+
+.resume-wrapper .icon-remove:hover {
+  color: red;
+}
+
+.resume-wrapper .view-remove .icon-view:hover {
+  color: #2875a1;
+}
+
+.resume-wrapper .view-remove .text {
+  font-size: 12px;
+}
+
+.resume-wrapper .resume-upload:hover {
   background-color: #676779;
   color: white;
   cursor: pointer; 
 }
 
-.resume-upload .icon {
+.resume-wrapper .resume-upload .icon {
   font-size: 40px; 
   display: block
 }
 
-.resume-upload .text {
-  padding: 10px; 
+.resume-wrapper .text {
+  padding: 0px; 
   display: block
 }
 
@@ -82,6 +103,23 @@
 }
 
 
+
+//filter
+.filter {
+  transition: opacity 1s ease-out;
+  opacity: 0; 
+  height: 0;
+  overflow: hidden; 
+}
+.filter-expanded{
+  opacity: 1;
+  //height: auto;
+}
+
+// Advance search
+.advancedSearchBox .search-parameter {
+  background-color: #2875a1;
+}
 
 
 

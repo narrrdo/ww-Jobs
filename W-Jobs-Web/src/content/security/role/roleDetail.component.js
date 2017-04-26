@@ -9,9 +9,9 @@ angular
 		bindings: {}
 });
 
-Controller.$inject = ['$translate', '$state', 'roleDataService', 'permissionDataService'];
+Controller.$inject = ['$translate', '$state', 'roleDataService', 'permissionDataService','toastr'];
 
-function Controller ($translate, $state, roleDataService, permissionDataService) {
+function Controller ($translate, $state, roleDataService, permissionDataService, toastr) {
 
 	var vm = this;
 	
@@ -64,19 +64,33 @@ function Controller ($translate, $state, roleDataService, permissionDataService)
 
 				roleDataService.save(role).$promise.then(function(r) {
 
+					$translate('securityRoleDetail_save_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					$state.go(components.SECURITY_ROLE.STATE);
 
 				}).catch(function(error) {
-					console.log(error);
+					
+					$translate('securityRoleDetail_save_error').then(function(msg) {
+						toastr.success(msg);
+					});
 				});
 			} else {
 
 				roleDataService.update({id : vm.id}, role).$promise.then(function(r) {
 
+					$translate('securityRoleDetail_update_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					$state.go(components.SECURITY_ROLE.STATE);
 
 				}).catch(function(error) {
-					console.log(error);
+					
+					$translate('securityRoleDetail_update_error').then(function(msg){
+						toastr.success(msg);
+					});
 				});
 			}
 		}

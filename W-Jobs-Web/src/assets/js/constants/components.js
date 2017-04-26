@@ -64,6 +64,12 @@
 		STATE: "candidate-detail", 
 		NAME: "candidateDetail", 
 		URL: "/candidate/detail/:id?"
+	},
+
+	DASHBOARD : {
+		STATE: "dashboard",
+		NAME: "dashboard",
+		URL: "/dashboard"
 	}
 };
 

@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var Candidates = require('../../domain/candidate');
 var pdfToText = require('../../common/converters/pdfToText');
+var ConflictException = require('../../common/exception/conflictException');
 
 var _module = {};
 
@@ -14,6 +15,8 @@ _module.execute = function(id, canditate, file) {
 
 			if(error) return reject(error);
 
+			var p;
+
 			doc.name = canditate.name;
 			doc.lastName = canditate.lastName;
 			doc.tel = canditate.tel;
@@ -21,29 +24,35 @@ _module.execute = function(id, canditate, file) {
 
 			if(file) {
 
-				pdfToText.convert(file.buffer).then(function(resumeText){
+				p = pdfToText.convert(file.buffer);
 
-					doc.resume = {};
-					doc.resume.file = file.buffer;
-					doc.resume.text = resumeText;
-
-					doc.save(function(error){
-
-						if(error) reject(error);
-
-						resolve(doc);
-					});
-				});
 			} else {
 
-				doc.save(function(error) {
+				p = Promise.resolve();
+			}
+
+			p.then(function(resumeText) {
+
+				var toUpdate = canditate.toUpdateResume;
+
+				if(toUpdate) {
+
+					doc.resume = {};
+					doc.resume.file = file ? file.buffer : null;
+					doc.resume.text = file ? resumeText : '';
+				}
+				
+				doc.save(function(error){
 
 					if(error) reject(error);
 
 					resolve(doc);
 				});
-			}
+			}).catch(function(error){
 			
+				reject(new ConflictException(error.message));
+
+			});
 		});
 	});
 

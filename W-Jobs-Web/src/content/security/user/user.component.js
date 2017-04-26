@@ -9,9 +9,9 @@
 			bindings: {}
 	});
 
-	Controller.$inject = ['userDataService'];
+	Controller.$inject = ['userDataService','$translate','toastr'];
 
-	function Controller (userDataService) {
+	function Controller (userDataService, $translate, toastr) {
 
 		var vm = this;
 		
@@ -30,11 +30,7 @@
 				vm.tableCheck.reset();
 				
 				vm.userList = users;	
-
-			}).catch(function(error){
-				console.log(error);
-			});
-
+			})
 		}
 
 		vm.confirmDelete = function() {
@@ -52,8 +48,9 @@
 			
 			} else {
 
-				alert('Debe seleccionar un usuario.');
-
+				$translate('securityUser_delete_warning_selectUser').then(function(msg){
+					toastr.warning(msg);
+				});
 			}
 		}
 
@@ -63,15 +60,19 @@
 
 			angular.forEach(list, function(value, key) {
 
-				console.log(value);
-
 				userDataService.delete({id : value}).$promise.then(function(user){
 						
+					$translate('securityUser_delete_ok').then(function(msg){
+						toastr.success(msg);
+					});
+
 					vm.loadUsers();
 
 				}).catch(function(error) {
 						
-					alert(error);
+					$translate('securityUser_delete_error').then(function(msg){
+						toastr.success(msg);
+					});
 				});
 			});
 		}

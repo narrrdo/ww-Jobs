@@ -70,19 +70,12 @@
 		</div>
 	</div>
 
-	<div class="row"> 
-		<div class="col-sm-7 col-md-5 col-lg-4" >
-			<div class="resume-upload  my-drop-zone" ng-click="vm.clickUpload()" nv-file-drop nv-file-over uploader="vm.uploader">
-				<div >	
-					<i class="fa fa-file-text icon" aria-hidden="true" ng-hide="vm.document.name"></i>
-					<i class="fa fa-file-pdf-o icon" aria-hidden="true" ng-show="vm.document.name"></i>
-					<span class="text" ng-hide="vm.document.name">Upload your resume</span>
-					<span class="text" ng-show="vm.document.name" ng-bind="vm.document.name"></span>
-				</div>
-				<input type="file" id="uploadBtn" ng-show="false" nv-file-select uploader="vm.uploader" accept=".pdf"/>
-			</div>
-		</div>
-	</div>
+	<upload id="vm.id" 
+					candidate="vm.candidate" 
+					uploader="vm.uploader"
+					view-resume="vm.viewResume"
+					remove-resume="vm.removeResume">
+	</upload>
 
 	<br>
 

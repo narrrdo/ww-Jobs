@@ -5,12 +5,16 @@
     .module('app')
     .factory('candidateDataService', service);
 
-  service.$inject = ['$resource'];
+  service.$inject = ['$resource','API_END_POINT'];
 
-  function service($resource) {
+  function service($resource, API_END_POINT) {
 
-    return $resource('http://localhost:3000/candidates/:id', { id: '@Id' }, {
-      
+    return $resource(API_END_POINT + 'candidates/:id', { id: '@Id' }, {
+      search: {
+        method: 'GET', 
+        params: { q: 'q'},
+        isArray: true
+      },
       update: {
         method: 'PUT'
       }

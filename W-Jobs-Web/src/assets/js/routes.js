@@ -76,13 +76,19 @@ function routesConfig($stateProvider, $urlRouterProvider) {
     // Candidates
     .state(components.CANDIDATE.STATE, { 
       url: components.CANDIDATE.URL, 
-      component: components.CANDIDATE.NAME
+      component: components.CANDIDATE.NAME,
+      data : { permissions : ['CANDIDATES_GET_ALL'] }
     })
     
     .state(components.CANDIDATE_DETAIL.STATE, { 
       url: components.CANDIDATE_DETAIL.URL, 
-      component: components.CANDIDATE_DETAIL.NAME
-      
+      component: components.CANDIDATE_DETAIL.NAME,
+      data : { permissions : ['CANDIDATES_GET_DETAILS'] }
+    })
+
+    .state(components.DASHBOARD.STATE, { 
+      url: components.DASHBOARD.URL, 
+      component: components.DASHBOARD.NAME
     })
 
     .state('tables', { 

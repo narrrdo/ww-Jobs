@@ -5,14 +5,14 @@
     .module('app')
     .factory('loginDataService', service);
 
-  service.$inject = ['$resource'];
+  service.$inject = ['$resource','API_END_POINT'];
 
-  function service($resource) {
+  function service($resource, API_END_POINT) {
 
-		return $resource('http://localhost:3000/token/:id', { id: '@Id' }, {
+		return $resource(API_END_POINT + 'token/:id', { id: '@Id' }, {
       
 			token : {
-				url: 'http://localhost:3000/token',
+				url: API_END_POINT + 'token',
 				method : 'POST',
 				responseType: 'json'
 			}

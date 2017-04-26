@@ -7,6 +7,8 @@ var auth = require("../security/auth")();
 var Permission = require('../../common/constant/permission');
 var FindAllJob = require('../../application/job/findAllJobs');
 var FindJobById = require('../../application/job/findJobById');
+var FindOpenJobs = require('../../application/job/findOpenJobs');
+var FindPublishedJobs = require('../../application/job/findPublishedJobs');
 var CreateJob = require('../../application/job/createJob');
 var UpdateJob = require('../../application/job/updateJob');
 var DeleteJob = require('../../application/job/deleteJob');
@@ -15,6 +17,8 @@ var SendJobToLinkedIn = require('../../application/job/sendJobToLinkedIn');
 
 
 router.get('/', auth.hasPermission(Permission.JOB_GET_ALL), findAllJob);
+router.get('/open', auth.hasPermission(Permission.JOB_GET_ALL), findOpenJobs);
+router.get('/published', auth.hasPermission(Permission.JOB_GET_ALL), findPublishedJobs);
 router.get('/:id', auth.hasPermission(Permission.JOB_GET_DETAILS), findJobById);
 router.post('/', auth.hasPermission(Permission.JOB_ADD), createJob);
 router.post('/:id/facebook', sendJobToFaceBook);
@@ -42,6 +46,23 @@ function findJobById(req, res, next) {
     }).catch(next);
 }
 
+function findOpenJobs(req, res, next) {
+
+    FindOpenJobs.execute().then(function(jobs) {
+
+        res.json(jobs);
+
+    }).catch(next);
+}
+
+function findPublishedJobs(req, res, next) {
+
+    FindPublishedJobs.execute().then(function(jobs) {
+
+        res.json(jobs);
+
+    }).catch(next);
+}
 
 function createJob(req, res, next) {
   

@@ -34,7 +34,10 @@
 
 			// Candidates
 			CANDIDATE : content_base + "candidate/",
-			CANDIDATE_DETAIL : content_base + "candidate/"
+			CANDIDATE_DETAIL : content_base + "candidate/",
+
+			// Dashboard
+			DASHBOARD : content_base + "dashboard/"
 		}	
 	};
 

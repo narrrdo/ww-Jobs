@@ -13,12 +13,13 @@ _module.execute = function(id){
 
 		FindJobById.execute(id).then(function(job){
 
-			faceBook.sendPost(job.description);
+			return faceBook.sendPost(job.description);
 
 		}).then(function(){
 
+			var postedDate = {postedDate : new Date().toISOString()};
 			var where = {_id : id};
-			var set = {$push: {'socialNetwork.facebook.postedDate' : new Date().toISOString()} };
+			var set = {$push: {'socialNetwork.facebook.postedDate' : postedDate} };
 
 			return Jobs.update(where, set);
 

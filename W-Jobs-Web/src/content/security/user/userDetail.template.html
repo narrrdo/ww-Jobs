@@ -1,9 +1,11 @@
 <page-title title="'securityUserDetail_title'| translate" ng-init="vm.init()"></page-title>
 
+<validation-form-alert is-submitted="vm.submitted" show-error="vm.showError" ></validation-form-alert>
+
 <div class="row">
 	<div class="col-xs-12">
 
-		<form name="form" class="form" ng-submit="vm.save(form, vm.user)" autocomplete="off" novalidate>
+		<form name="form" class="form" ng-submit="vm.showError(form); vm.save(form, vm.user)" autocomplete="off" novalidate>
 
 			<!--Username --> 
 			<div class="row"> 

@@ -1,6 +1,8 @@
 <page-title title="'candidateDetail_title'| translate" ng-init="vm.init()"></page-title> 
 
-<form name="form" class="form" nv-file-drop uploader="vm.uploader" ng-submit="vm.save(form, vm.candidate)" autocomplete="off" novalidate>
+<validation-form-alert is-submitted="vm.submitted" show-error="vm.showError" ></validation-form-alert>
+
+<form name="form" class="form" nv-file-drop uploader="vm.uploader" ng-submit="vm.showError(form); vm.save(form, vm.candidate)" autocomplete="off" novalidate>
 
 	<!--Name --> 
 	<div class="row"> 
@@ -46,8 +48,8 @@
 						class="form-control" 
 						id="tel" 
 						name="tel" 
-						maxlength="10"
-						max="10"
+						mask="999.999.9999"
+						clean="true"
 						required>
 			</div>
 		</div>
@@ -85,12 +87,13 @@
 		</div>
 	</div>
 
-	
-
-			<div class="row">
-				<div class="col-sm-12 text-right cancel-ok-button">
-					<cancel-ok-button submitted="vm.submitted"></cancel-ok-button>		
-				</div>
-			</div>
+	<div class="row">
+		<div class="col-sm-12 text-right cancel-ok-button">
+			<cancel-ok-button 
+				submitted="vm.submitted" 
+				permission="vm.id ? 'CANDIDATES_UPDATE' : 'CANDIDATES_ADD'">
+			</cancel-ok-button>		
+		</div>
+	</div>
 
 </form>

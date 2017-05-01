@@ -1,9 +1,11 @@
 <page-title title="'securityRoleDetail_title'| translate" ng-init="vm.init()"></page-title>
 
+<validation-form-alert is-submitted="vm.submitted" show-error="vm.showError" ></validation-form-alert>
+
 <div class="row">
 	<div class="col-xs-12">
 
-		<form name="form" class="form" ng-submit="vm.save(form, vm.role)" autocomplete="off" novalidate>
+		<form name="form" class="form" ng-submit="vm.showError(form); vm.save(form, vm.role)" autocomplete="off" novalidate>
 
 			<!--Name --> 
 			<div class="row"> 
@@ -82,7 +84,7 @@
 				<div class="col-xs-12 col-sm-8 col-lg-6">
 					<rd-widget>
 						<rd-widget-header icon="fa fa-unlock-alt" title="{{'global_permissions' | translate}}">
-							<a class="" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+							<!--<a class="" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>-->
 						</rd-widget-header>
 						<rd-widget-body classes="medium no-padding">
 							<div class="table-responsive">

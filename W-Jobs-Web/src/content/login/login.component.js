@@ -9,9 +9,9 @@
 			bindings: {}
 	});
 
-	Controller.$inject = ['$state','loginDataService','tokenService','localeService','authManager','permissionService'];
+	Controller.$inject = ['$state','loginDataService','tokenService','localeService','authManager','permissionService','toastr'];
 
-	function Controller ($state, loginDataService, tokenService, localeService, authManager, permissionService) {
+	function Controller ($state, loginDataService, tokenService, localeService, authManager, permissionService, toastr) {
 
 		var vm = this;
 		
@@ -21,7 +21,7 @@
 
 			if(form.$valid) {
 
-				loginDataService.token(login).$promise.then(function(token){
+				loginDataService.token(login).$promise.then(function(token) {
 
 					tokenService.setFullToken(token);
 
@@ -35,9 +35,9 @@
 
 					$state.go(components.DASHBOARD.STATE);
 
-				}).catch(function(error){
-					alert(error);
-					console.log(error);
+				}).catch(function(error) {
+					
+					toastr.error(error.data.message);
 				});
 			}
 		}

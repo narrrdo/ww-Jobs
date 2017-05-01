@@ -14,6 +14,7 @@ var perm = require('./permission/permissionRouter')
 var token = require('./security/tokenRoute');
 var job = require('./jobs/jobRouter');
 var candidate = require('./candidate/candidateRoute');
+var publicAPIs = require('./public/publicRoute');
 
 
 router.use(headerInterceptorRoute);
@@ -25,6 +26,7 @@ router.use('/roles', role);
 router.use('/permissions', perm);
 router.use('/jobs', job);
 router.use('/candidates', candidate);
+router.use('/public', publicAPIs);
 //router.use(finallyRoute);
 
 router.use(function(err, req, res, next){

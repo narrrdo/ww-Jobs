@@ -73,7 +73,7 @@
 				}).catch(function(error) {
 						
 					$translate('securityJob_delete_error').then(function(msg){
-						toastr.success(msg);
+						toastr.error(msg);
 					});
 				});
 			});

@@ -33,12 +33,10 @@ var Role = new Schema({
       type: Boolean,
       required: true
     },
-    permissions: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Permision'
-        }
-    ]
+    permissions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Permision'
+    }]
 },
 {
   timestamps: true,

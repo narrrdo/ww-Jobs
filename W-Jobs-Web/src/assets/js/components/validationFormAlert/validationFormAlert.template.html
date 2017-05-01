@@ -1,0 +1,13 @@
+<div class="row" ng-if="vm.isSubmitted && vm.errorList.length > 0">
+	<div class="col-xs-12">
+		<div class="alert alert-danger">
+			<a  class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>{{'form_validation_title' | translate}}</strong>
+			<ul>
+				<li ng-repeat="e in vm.errorList">
+					{{e}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

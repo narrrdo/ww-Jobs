@@ -49,7 +49,11 @@ var Job = new Schema({
       linkedin : [{
         postedDate: {type: Date} 
       }]
-    }
+    },
+    candidates: [{
+      type: mongoose.Schema.Types.ObjectId,
+        ref: 'Candidate'
+    }]
 },
 {
   timestamps: true,

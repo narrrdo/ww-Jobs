@@ -52,9 +52,7 @@ function Controller (permissionDataService, localeService, $rootScope, $translat
 		
 		} else {
 
-			$translate('securityPermission_delete_warning_selectPermission').then(function(msg){
-				toastr.warning(msg);
-			});
+			toastr.warning($translate.instant('securityPermission_delete_warning_selectPermission'));
 		}
 	}
 
@@ -66,17 +64,13 @@ function Controller (permissionDataService, localeService, $rootScope, $translat
 
 			permissionDataService.delete({id : value}).$promise.then(function(permission){
 					
-				$translate('securityPermission_delete_ok').then(function(msg){
-					toastr.success(msg);
-				});
-
+				toastr.success($translate.instant('securityPermission_delete_ok'));
+				
 				vm.loadPermission();
 
 			}).catch(function(error) {
 					
-				$translate('securityPermission_delete_error').then(function(msg){
-					toastr.error(msg);
-				});
+				toastr.error($translate.instant('securityPermission_delete_error'));
 			});
 		});
 	}

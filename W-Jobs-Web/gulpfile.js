@@ -123,7 +123,7 @@ gulp.task('custom-templates', function() {
 
 // ###############################################################################
 const dir = {
-    bower: 'bower_components/**/*.{js,css,ttf,woff,eof,svg}',
+    bower: 'bower_components/**/*.{js,css,ttf,woff**,eof,svg}',
     assets: 'src/assets/**',
     content: 'src/content/**',
     template: 'src/template/**',

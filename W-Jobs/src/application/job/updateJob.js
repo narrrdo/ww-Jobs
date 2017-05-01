@@ -13,17 +13,17 @@ _module.execute = function(id, job) {
 
 			if(error) return reject(error);
 
+			if(!doc.published && job.published) {
+				
+				doc.publishedDate = new Date().toISOString();
+			}
+
 			doc.title = job.title;
 			doc.description = job.description;
 			doc.closing = job.closing;
 			doc.lists = job.lists;
 			doc.published = job.published;
 			doc.isOpen = job.isOpen;
-
-			if(!doc.publishedDate && job.published) {
-				
-				doc.publishedDate = new Date().toISOString();
-			}
 
 			doc.save(function(error) {
 

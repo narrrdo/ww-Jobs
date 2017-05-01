@@ -26,8 +26,9 @@ angular
 			if(state.data) {
 				
 				var routePermissions = state.data.permissions;
-				
-				if(!hasPermission(routePermissions)) {
+				var containOne = state.data.containOne;
+
+				if(!hasPermission(routePermissions, containOne)) {
 
 					tokenService.removeToken();
 					$state.go(components.LOGIN.STATE);
@@ -37,21 +38,36 @@ angular
 
 		$rootScope.hasPermission = hasPermission;
 
-		function hasPermission(permList) {
+		function hasPermission(permList, containOne) {
 
 			var userPermissions = tokenService.getPermissions();
 			var hasPermission = false;
+			var hasPermissionCounter = 0;
 			var permissoionsList;
+
+			containOne = containOne || false;
+
+			if(!userPermissions) return false;
 
 			permissoionsList = (_.isArray(permList)) ? permList  : [permList];
 
 			permissoionsList.forEach(function(item){
 
-			if(userPermissions.indexOf(permissions[item]) != -1) {
+				if(userPermissions.indexOf(permissions[item]) != -1) {
 
-					hasPermission = true;
+					hasPermissionCounter++;
 				}
 			});
+
+			if(permissoionsList.length === hasPermissionCounter) {
+
+				hasPermission = true;
+			}
+
+			if(containOne && permissoionsList.length >= 1) {
+
+				hasPermission = true;
+			}
 
 			return hasPermission;
 		}

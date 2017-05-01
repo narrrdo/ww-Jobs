@@ -11,8 +11,8 @@ var app = express();
 
 i18n.configure({ locales:['en', 'es'], directory: __dirname + '/src/common/locales'});
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(auth.initialize());
 app.use(express.static(path.join(__dirname, 'presentation')));
 app.use(route);

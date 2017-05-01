@@ -6,41 +6,44 @@
   </div>
 </div>-->
 
-<div class="row" ng-init="vm.init()">
-	<div class="col-lg-3 col-md-6 col-xs-12">
+<div class="row">
+	<div class="col-lg-3 col-md-6 col-xs-12" ng-if="$root.hasPermission('DASHBOARD_OPEN_JOBS')">
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon green pull-left">
 					<i class="fa fa-users"></i>
 				</div>
-				<div class="title" ng-bind="vm.openJobList.length"></div>
-				<div class="comment">Opened Jobs</div>
+				<div class="title" ng-bind="vm.openJobList.length || 0"></div>
+				<div class="comment">{{'global_openJobs' | translate}}</div>
 			</rd-widget-body>
 		</rd-widget>
 	</div>
-	<div class="col-lg-3 col-md-6 col-xs-12">
+
+	<div class="col-lg-3 col-md-6 col-xs-12" ng-if="$root.hasPermission('DASHBOARD_PUBISHED_JOBS')">
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon red pull-left">
 					<i class="fa fa-tasks"></i>
 				</div>
-				<div class="title" ng-bind="vm.publishedJobList.length">2</div>
-				<div class="comment">Published Jobs</div>
+				<div class="title" ng-bind="vm.publishedJobList.length || 0">2</div>
+				<div class="comment">{{'global_publishedJobs' | translate}}</div>
 			</rd-widget-body>
 		</rd-widget>
 	</div>
-	<div class="col-lg-3 col-md-6 col-xs-12">
+
+	<div class="col-lg-3 col-md-6 col-xs-12" ng-if="$root.hasPermission('CANDIDATES_GET_ALL')">
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon orange pull-left">
 					<i class="fa fa-sitemap"></i>
 				</div>
 				<div class="title">3</div>
-				<div class="comment">New Candidates</div>
+				<div class="comment">{{'global_newCandidates' | translate}}</div>
 			</rd-widget-body>
 		</rd-widget>
 	</div>
-	<div class="col-lg-3 col-md-6 col-xs-12">
+	
+	<div class="col-lg-3 col-md-6 col-xs-12" ng-if="$root.hasPermission('REFERRAL_GET_ALL')">
 		<rd-widget>
 			<rd-widget-body>
 				<div class="widget-icon blue pull-left">
@@ -53,13 +56,12 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-lg-6">
-		<rd-widget>
-      		<rd-widget-header icon="fa fa-list-ol" title="Opened Jobs">
-				
-      		</rd-widget-header>
-      		<rd-widget-body classes="medium no-padding">
+
+	<div class="col-lg-6" ng-if="$root.hasPermission('DASHBOARD_OPEN_JOBS')"> <!--ng-if="$root.hasPermission('')"-->
+		<rd-widget ng-init="vm.loadOpenJobs()">
+			<rd-widget-header icon="fa fa-briefcase" title="{{'global_openJobs' | translate}}">
+			</rd-widget-header>
+			<rd-widget-body classes="medium no-padding">
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
@@ -79,10 +81,9 @@
 			</rd-widget-body>
 		</rd-widget>
 	</div>
-	<div class="col-lg-6">
-		<rd-widget>
-			<rd-widget-header icon="fa fa-th-list" title="Published Jobs">
-				
+	<div class="col-lg-6" ng-if="$root.hasPermission('DASHBOARD_PUBISHED_JOBS')">
+		<rd-widget ng-init="vm.loadPublishedJobs()">
+			<rd-widget-header icon="fa fa-briefcase" title="{{'global_publishedJobs' | translate}}">
 			</rd-widget-header>
 			<rd-widget-body classes="medium no-padding">
 				<div class="table-responsive">
@@ -103,11 +104,11 @@
 					</table>	
 				</div>
 			</rd-widget-body>
-		<rd-widget>
+		</rd-widget>
 	</div>
-</div>
 
-<div class="row">
+
+<!--<div class="row">
 	<div class="col-lg-6">
 		<rd-widget>
 			<rd-widget-header icon="fa-cog fa-spin" title="Loading Directive">
@@ -118,4 +119,4 @@
 			</rd-widget-body>
 		</rd-widget>
 	</div>
-</div>
+</div>-->

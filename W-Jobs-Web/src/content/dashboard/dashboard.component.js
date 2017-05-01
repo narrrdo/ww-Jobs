@@ -20,8 +20,6 @@
 
 		vm.init = function() {
 
-			vm.loadOpenJobs();
-			vm.loadPublishedJobs();
 		}
 
 		vm.loadOpenJobs = function() {
@@ -33,7 +31,7 @@
 				vm.openJobList = docs;
 
 			}).catch(function(error){
-				alert(error);
+				
 			});
 		}
 
@@ -44,11 +42,9 @@
 				vm.publishedJobList = docs;
 
 			}).catch(function(error){
-				alert(error);
+				
 			});
-
 		}
-
 
 	}
 })(); 

@@ -1,0 +1,45 @@
+<div class="modal fade" id="modal-candidate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{'candidate_title' | translate}}</h4>
+      </div>
+			<divider-line></divider-line>
+      <div class="modal-body">
+        
+
+				<label>{{'jobDetail_candidatesWhoApplied' | translate}}</label>
+				<div class="inner-box" style="min-height: 250px">
+				
+					<table class="table">
+						<thead>
+							<tr>
+								<th width="35%" ng-bind="'global_name' | translate"></th>
+								<th width="40%" ng-bind="'global_email' | translate"></th>
+								<th width="15%" ng-bind="'global_tel' | translate" class="text-center">Tel</th>
+								<th width="10%" ng-bind="'global_resume' | translate" class="text-center">Resume</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="c in vm.candidates">
+								<td>{{ c.name + ' ' + c.lastName }}</td>
+								<td>{{ c.email }}</td>
+								<td class="text-center">{{ c.tel | tel}}</td>
+								<td class="text-center">
+									<i class="icon icon-view fa fa-download" ng-click="vm.viewResume(c.id)" aria-hidden="true"></i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				
+      </div>
+			<divider-line></divider-line>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

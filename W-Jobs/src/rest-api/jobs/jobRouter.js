@@ -21,8 +21,8 @@ router.get('/open', auth.hasPermission(Permission.JOB_GET_ALL), findOpenJobs);
 router.get('/published', auth.hasPermission(Permission.JOB_GET_ALL), findPublishedJobs);
 router.get('/:id', auth.hasPermission(Permission.JOB_GET_DETAILS), findJobById);
 router.post('/', auth.hasPermission(Permission.JOB_ADD), createJob);
-router.post('/:id/facebook', sendJobToFaceBook);
-router.post('/:id/linkedin', sendJobToLinkedIn);
+router.post('/:id/facebook', auth.hasPermission(Permission.JOB_PUBLISH_SOCIAL_NETWORK), sendJobToFaceBook);
+router.post('/:id/linkedin', auth.hasPermission(Permission.JOB_PUBLISH_SOCIAL_NETWORK), sendJobToLinkedIn);
 router.put('/:id', auth.hasPermission(Permission.JOB_UPDATE), updateJob);
 router.delete('/:id', auth.hasPermission(Permission.JOB_DELETE), deleteJob);
 

@@ -54,6 +54,12 @@
 		JOB_MODAL_SOCIAL_NETWORK : { 
 			NAME: "jobModalSocialNetwork"
 		},
+		JOB_MODAL_PREVIEW : { 
+			NAME: "jobModalPreview"
+		},
+		JOB_MODAL_CANDIDATE : { 
+			NAME: "jobModalCandidate"
+		},
 	
 	
 	CANDIDATE : { 

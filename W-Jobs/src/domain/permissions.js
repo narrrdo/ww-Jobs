@@ -10,23 +10,25 @@ var Permission = new Schema({
     name: {
         en: {
             type: String,
-            required: true
+            required: true,
+            maxlength: 100
         },
         es: {
             type: String,
-            required: true
+            required: true,
+            maxlength: 100
         }
     },
     description: {
         en: {
             type: String,
             required: true,
-            maxlength: 100
+            maxlength: 500
         },
         es: {
             type: String,
             required: true,
-            maxlength: 100
+            maxlength: 500
         }
     },
     enabled: {

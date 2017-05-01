@@ -17,6 +17,9 @@
 			// Generic Components
 			CHECKBOX_LIST : generic_base + "checkBoxList/",
 			CANCE_OK_BUTTON : generic_base + "cancelOkButton/",
+			VALIDATION_FORM_ALERT: generic_base + "validationFormAlert/",
+			PAGE_TOP_BAR: generic_base + "pageTopBar/",
+			BAR_SECTION: generic_base + "pageTopBar/",
 
 			// LogIn
 			LOGIN : content_base + "login/",
@@ -31,6 +34,8 @@
 			JOB : content_base + "jobs/",
 			JOB_DETAIL : content_base + "jobs/",
 			JOB_MODAL_SOCIAL_NETWORK : content_base + "jobs/modal/",
+			JOB_MODAL_PREVIEW : content_base + "jobs/modal/",
+			JOB_MODAL_CANDIDATE : content_base + "jobs/modal/",
 
 			// Candidates
 			CANDIDATE : content_base + "candidate/",

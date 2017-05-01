@@ -5,10 +5,20 @@
     <rd-widget>
 
       <rd-widget-header icon="fa fa-users" title="{{'global_userList' | translate}}">
-        <a class="btn btn-default btn-sm" role="button" ui-sref="user-detail({id : ''})"><i class="fa fa-plus" aria-hidden="true"></i></a>
-        <a class="btn btn-default btn-sm" role="button" ng-click="vm.confirmDelete()" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-         - 
-        <a class="btn btn-default btn-sm" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>
+        <a class="btn btn-default btn-sm" 
+           role="button" 
+           ui-sref="user-detail({id : ''})" 
+           ng-if="$root.hasPermission('USER_ADD')">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-default btn-sm" 
+           role="button" 
+           ng-click="vm.confirmDelete()" 
+           ng-if="$root.hasPermission('USER_DELETE')">
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </a>
+         <!--- 
+        <a class="btn btn-default btn-sm" href="#" role="button"><i class="fa fa-filter" aria-hidden="true"></i></a>-->
       </rd-widget-header>
       
       <rd-widget-body classes="xlarge no-padding">

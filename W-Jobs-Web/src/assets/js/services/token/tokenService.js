@@ -12,6 +12,11 @@
 		var vm = this;
 		var resp = {};
 
+		function existsToken() {
+
+			return resp.getToken() ? true : false;
+		}
+
 		resp.setFullToken = function(fullToken) {
 
 			var token = fullToken.token;
@@ -32,6 +37,15 @@
 			authManager.unauthenticate();
 		}
 
+		resp.getFullName = function() {
+
+			if(!existsToken()) return '';
+
+			var decoded = jwtHelper.decodeToken(resp.getToken());
+
+			return decoded.fullName;
+		}
+
 		resp.getExpirationDate = function() {
 
 			return jwtHelper.getTokenExpirationDate(resp.getToken());
@@ -48,10 +62,12 @@
 		}
 
 		resp.getPermissions = function() {
-		
-			var decoded = jwtHelper.decodeToken(resp.getToken());
+			
+			if(!existsToken()) return;
 
-			return decoded.role.permissions;
+				var decoded = jwtHelper.decodeToken(resp.getToken());
+
+				return decoded.role.permissions;
 		}
 
 		return resp;

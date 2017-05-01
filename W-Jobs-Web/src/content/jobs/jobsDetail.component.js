@@ -34,8 +34,24 @@
 				vm.job = job;
 
 			}).catch(function(error){
-				alert(error);
+				
 			});
+		}
+
+		vm.addToList = function() {
+
+			if(!vm.job.lists) {
+
+				vm.job.lists = new Array();
+				
+			} 
+
+			vm.job.lists.push({title : '', list : vm.html})
+		}
+
+		vm.removeFromList = function(index) {
+
+			vm.job.lists.splice(index, 1);
 		}
 
 		vm.save = function(form, job) {

@@ -1,9 +1,11 @@
 <page-title title="'securityPermissionDetail_title'| translate" ng-init="vm.init()"></page-title>
 
+<validation-form-alert is-submitted="vm.submitted" show-error="vm.showError" ></validation-form-alert>
+
 <div class="row">
 	<div class="col-xs-12">
 
-		<form name="form" class="form" ng-submit="vm.save(form, vm.permission)" autocomplete="off" novalidate>
+		<form name="form" class="form" ng-submit="vm.showError(form); vm.save(form, vm.permission)" autocomplete="off" novalidate>
 
 			<!--Name En -->
 			<div class="row">
@@ -15,8 +17,8 @@
 								class="form-control" 
 								id="nameEn" 
 								name="nameEn" 
-								maxlength="50"
-								max="50"
+								maxlength="100"
+								max="100"
 								required
 								>
 					</div>
@@ -33,8 +35,8 @@
 								class="form-control" 
 								id="nameEs" 
 								name="nameEs" 
-								maxlength="50"
-								max="50"
+								maxlength="100"
+								max="100"
 								required
 								>
 					</div>
@@ -51,10 +53,10 @@
 								class="form-control" 
 								id="descriptionEn" 
 								name="descriptionEn" 
-								maxlength="100"
-								max="100"
+								maxlength="500"
+								max="500"
 								required
-								cols="200"
+								cols="500"
 								rows="5">
 							</textarea>
 					</div>
@@ -70,10 +72,10 @@
 								class="form-control" 
 								id="descriptionEs" 
 								name="descriptionEs" 
-								maxlength="100"
-								max="100"
+								maxlength="500"
+								max="500"
 								required
-								cols="200"
+								cols="500"
 								rows="5">
 							</textarea>
 					</div>

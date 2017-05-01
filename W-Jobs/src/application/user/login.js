@@ -14,7 +14,7 @@ _module.execute = function(username, password){
 		
 		User.findOne({'username' : username}).deepPopulate('role.permissions').exec(function(error, user){
 
-			if(error) reject(error);
+			if(error) reject(new NoAuthorizeException('Un error ocurrio en nuestro sistema. Por favor trate mas tarde'));
 			
 			if(!user) return reject(new NoAuthorizeException('User not found in our system'));
 
@@ -39,6 +39,7 @@ _module.execute = function(username, password){
 			let u = {};
 			u.id = user._id;
 			u.username = user.username;
+			u.fullName = `${user.firstname} ${user.lastname}`;
 			u.locale = user.locale;
 			u.role = {};
 			u.role.id = user.role._id;

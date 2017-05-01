@@ -1,31 +1,32 @@
 <page-title title="'jobDetail_title'| translate" ng-init="vm.init()"></page-title> 
 
-<div class="row page-top-bar">
-	<div class="col-xs-12 text-right">
-		
-		<span class="bar-section">
-			Published Date: <span> 01/04/2017 </span>
-		</span>
-		
-		<span class="bar-section">
-			<a role="button" data-toggle="modal" data-target="#myModal">
+<page-top-bar>
+	<bar-section ng-if="vm.job.publishedDate">
+		{{'global_publishedDate' | translate}}: 
+		<span ng-bind="vm.job.publishedDate | date: 'MM/dd/yyyy'"></span>
+	</bar-section>
+	<bar-section>
+		<a class="" role="button" data-toggle="modal" data-target="#modal-preview">
+			<i class="fa fa-eye"></i>
+		</a>
+	</bar-section>
+	<bar-section>
+		<a role="button" data-toggle="modal" data-target="#modal-candidate">
+			<i class="fa fa-users" aria-hidden="true"></i>
+		</a>
+	</bar-section>
+	<bar-section ng-if="$root.hasPermission('JOB_PUBLISH_SOCIAL_NETWORK')">
+		<a role="button" data-toggle="modal" data-target="#modal-socialNetwork">
 			<i class="fa fa-share-alt" aria-hidden="true"></i>
-			</a>
-		</span>
+		</a>
+	</bar-section>
+</page-top-bar>
 
-		<span class="bar-section">
-			<a class="" role="button">
-				<i class="fa fa-bars"></i>
-				</a>
-		</span>
-		
-	</div>
-</div>
+<validation-form-alert is-submitted="vm.submitted" show-error="vm.showError" ></validation-form-alert>
 
 <div class="row">
 	<div class="col-xs-12">
-
-		<form name="form" class="form" ng-submit="vm.save(form, vm.job)" autocomplete="off" novalidate>
+		<form name="form" class="form" ng-submit="vm.showError(form); vm.save(form, vm.job)" autocomplete="off" novalidate>
 
 			<!--Title --> 
 			<div class="row"> 
@@ -77,33 +78,32 @@
 					</label>
 				</div>
 			</div>
-			<div class="row"> 
-				<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.list1.$invalid]">
-					<div>
-						<input type="text" 
-								ng-init="vm.job.lists = []"
-								ng-model="vm.job.lists[0].title" 
-								class="form-control" 
-								id="title" 
-								name="title" 
-								maxlength="100"
-								max="100"
-								required>
+
+			<div ng-repeat="l in vm.job.lists">
+				<div class="row"> 
+					<div class="form-group col-sm-7 col-md-5 col-lg-4 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.list1.$invalid]">
+						<div>
+							<input type="text" 
+									ng-model="vm.job.lists[$index].title" 
+									class="form-control"  
+									name="list{{$index}}" 
+									maxlength="100"
+									max="100">
+						</div>
 					</div>
+					<u class="small text-ligth" style="line-height: 35px;" ng-click="vm.removeFromList($index)">{{'jobDetail_removeThisSection' | translate}}</u>
 				</div>
-				<u class="small text-ligth" style="line-height: 35px;" ng-click="">{{'jobDetail_removeThisSection' | translate}}</u>
-			</div>
-			<div class="row"> 
-				<div class="form-group col-sm-7 col-md-5 col-lg-6 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.list1.$invalid]">
-					<div class="editable" 
-							style="height: 240px; overflow-x: auto;"
-							contenteditable="true"
-							ng-model="vm.job.lists[0].list"
-							ng-init="vm.job.lists[0].list = '<ul><li></li></ul>'"
-							name="list1"
-							strip-br="false"
-							strip-tags="false"
-							select-non-editable="false">
+				<div class="row"> 
+					<div class="form-group col-sm-7 col-md-5 col-lg-6 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.list1.$invalid]">
+						<div class="editable" 
+								style="height: 240px; overflow-x: auto;"
+								contenteditable="true"
+								ng-model="vm.job.lists[$index].list"
+								name="list{{$index}}"
+								strip-br="false"
+								strip-tags="false"
+								select-non-editable="false">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -112,7 +112,7 @@
 				<div class="col-xs-12">
 					<a class="btn btn-default" 
 						role="button" 
-						ng-click=""
+						ng-click="vm.addToList()"
 						ng-bind="'jobDetail_addAList' | translate">
 					</a>
 				</div>
@@ -133,8 +133,8 @@
 								class="form-control" 
 								id="closing" 
 								name="closing" 
-								maxlength="500"
-								max="500"
+								maxlength="1000"
+								max="1000"
 								rows="8"
 								cols="20">
 						</textarea>
@@ -191,3 +191,11 @@
 	social-network="vm.job.socialNetwork"
 	load-function="vm.loadJob">
 </job-modal-social-network>
+
+<job-modal-preview
+	job="vm.job">
+</job-modal-preview>
+
+<job-modal-candidate
+	candidates="vm.job.candidates">
+</job-modal-candidate>

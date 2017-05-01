@@ -37,9 +37,9 @@ function Controller ($translate, $state, permissionDataService, toastr) {
 	}
 
 	vm.save = function(form, permission) {
+		
+		if(form.$valid) {
 
-		if(form.$valid)
-		{
 			if(!vm.id) {
 
 				permissionDataService.save(permission).$promise.then(function(p){

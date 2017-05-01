@@ -16,24 +16,21 @@
 			</a>
 		</li>
 		<li class="sidebar-list" 
-			  ng-if="$root.isAuthenticated && 
-					($root.hasPermission('USER_GET_ALL') ||
-					 $root.hasPermission('ROLE_GET_ALL') ||
-					 $root.hasPermission('PERMISSION_GET_ALL'))">
+			  ng-if="$root.isAuthenticated && $root.hasPermission('SECURITY_MAIN')">
 			<a ui-sref="{{ vm.components.SECURITY_MAIN.STATE }}">{{'securityMain_title' | translate}}  
-				<span class="menu-icon fa fa-lock" style="font-size: 20px; text-align: center;"></span>
+				<span class="menu-icon fa fa-lock" style="font-size: 20px;"></span>
 			</a>
 		</li>
 		<li class="sidebar-list" 
 			  ng-if="$root.isAuthenticated && $root.hasPermission('JOB_GET_ALL')">
 			<a ui-sref="{{ vm.components.JOB.STATE }}">{{'jobDetail_title_short' | translate}}  
-				<span class="menu-icon fa fa-list-alt"></span>
+				<span class="menu-icon fa fa-briefcase"></span>
 			</a>
 		</li>
 		<li class="sidebar-list" 
 			  ng-if="$root.isAuthenticated && $root.hasPermission('CANDIDATES_GET_ALL')">
 			<a ui-sref="{{ vm.components.CANDIDATE.STATE }}">{{'candidate_title' | translate}}   
-				<span class="menu-icon fa fa-users"></span>
+				<span class="menu-icon fa fa-address-book-o" style="font-size: 17px;"></span>
 			</a>
 		</li>
 		<!--<li class="sidebar-list" 
@@ -44,7 +41,7 @@
 		</li>-->
 	</ul>
 
-	<div class="sidebar-footer">
+	<div class="sidebar-footer" ng-if="$root.isAuthenticated">
 		<div class="col-xs-4">
 			<a href="https://github.com/rdash/rdash-angular" target="_blank">
 				Github

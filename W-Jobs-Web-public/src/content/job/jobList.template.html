@@ -1,0 +1,19 @@
+
+<page-title title="'global_jobList' | translate" ng-init="vm.init()"></page-title>
+
+<div class="container-fluid page-content">
+	<div class="container">
+		<div class="job-list" ng-repeat="j in vm.jobList"> 
+			<div class="title">
+				<i class="fa fa-suitcase"></i> 
+				<span class="link" ui-sref="jobDetail({id : j.id})">{{ j.title }}</span>
+			</div>
+			<div>
+				<span>{{ 'global_published' | translate }}:</span> 
+				<span style="color: #E05441">{{ j.publishedDate | date: 'MM/dd/yyyy' }}</span>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<page-footer></page-footer>

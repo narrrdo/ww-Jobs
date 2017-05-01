@@ -23,8 +23,11 @@ angular
     $scope.$watch(vm.getWidth, function(newValue, oldValue) {
         
 			if (newValue >= mobileView) {
+
 				if (angular.isDefined($cookieStore.get('toggle'))) {
+
 					vm.toggle = ! $cookieStore.get('toggle') ? false : true;
+					
 				} else {
 					vm.toggle = true;
 				}

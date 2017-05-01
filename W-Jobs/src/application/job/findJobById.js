@@ -9,7 +9,7 @@ _module.execute = function(id){
 
 	var resp = new Promise(function(resolve, reject){
 
-		Jobs.findById(id).exec(function(error, doc){
+		Jobs.findById(id).populate('candidates').exec(function(error, doc){
 
 			if(error) reject(error);
 

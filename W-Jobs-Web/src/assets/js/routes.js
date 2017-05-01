@@ -20,8 +20,8 @@ function routesConfig($stateProvider, $urlRouterProvider) {
 
     .state(components.SECURITY_MAIN.STATE, { 
       url: components.SECURITY_MAIN.URL, 
-      component: components.SECURITY_MAIN.NAME
-      
+      component: components.SECURITY_MAIN.NAME,
+      data : { permissions : ['SECURITY_MAIN'] }
     })
 
     .state(components.SECURITY_USER.STATE, { 
@@ -88,7 +88,8 @@ function routesConfig($stateProvider, $urlRouterProvider) {
 
     .state(components.DASHBOARD.STATE, { 
       url: components.DASHBOARD.URL, 
-      component: components.DASHBOARD.NAME
+      component: components.DASHBOARD.NAME, 
+      data : { permissions : ['DASHBOARD'] }
     })
 
     .state('tables', { 

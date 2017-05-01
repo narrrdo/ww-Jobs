@@ -7,16 +7,17 @@ angular
 		controller: Controller,		
 		controllerAs: "vm",
 		bindings: {
-			submitted: "="
+			submitted: "=",
+			permission: "="
 		}
 });
 
-Controller.$inject = ['$window'];
+Controller.$inject = ['$window','$rootScope'];
 
-function Controller ($window) {
+function Controller ($window, $rootScope) {
 
 	var vm = this;
-	
+
 	vm.goBack = function() {
 
 		$window.history.back();

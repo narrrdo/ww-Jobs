@@ -1,0 +1,190 @@
+body {
+	font-family: "freight-sans-pro", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #4D4D4D;
+		padding-bottom: 0px !important;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+.hand {
+	cursor: pointer;
+}
+
+.custom-button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #f0b29b;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #f0b29b;
+	box-shadow: inset 0px 1px 0px 0px #f0b29b;
+	background-color: #e15741;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #cc4533;
+	display: inline-block;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: normal;
+	padding: 12px 23px;
+	text-decoration: none;
+	letter-spacing: 1px
+}
+
+.custom-button:hover {
+	background-color:#e46d52;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.page--header { 
+	padding-top: 0px;
+	padding-bottom: 10px;
+}
+.page--header .logo .icon {
+	color: #E05441;
+	font-size: 30px;
+	padding: 10px;
+	border: solid 3px #E05441;
+	border-radius: 30px;
+	background-color: #e8eaea;
+}
+
+.page--header .logo .text {
+	font-family: "freight-sans-pro", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-weight: 500;
+	font-size: 30px;
+	color: #8E8F87;
+}
+
+.page-title {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-weight: 500;
+	letter-spacing: 1px; 
+	color: #E05441;
+	background-color: #E8EAEA;
+	border-top: solid 1px #c8c8c8;
+	border-bottom: solid 1px #c8c8c8;
+	font-size: 18px;
+}
+
+.page-content {
+	margin-top: 30px; 
+	padding-bottom: 30px;
+}
+
+.page-footer {
+	color: darkgrey;
+	background-color: #E8EAEA;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: solid 1px #c8c8c8;
+	border-bottom: solid 1px #c8c8c8;
+}
+
+.job-list {
+	color: #8E8F87;
+	padding: 20px 10px 20px 10px; 
+	border-bottom: solid 1px #e8eaea;
+}
+ .job-list .title {
+	 font-size: 24px;
+	 cursor: pointer;
+ }
+
+ .job-list .title .link:hover {
+	text-decoration: underline;
+	text-decoration-color: #E05441;
+ }
+
+ .job-detail {
+	color: #4D4D4D;
+ }
+
+.job-detail .title {
+	 font-size: 25px;
+	 color: #8E8F87;
+	 font-weight: 400;
+	 text-align: center;
+ }
+
+ .job-detail .description {
+	 margin-top: 20px;
+	 line-height: 25px;
+ }
+
+ .job-detail .lists{
+	 margin-top: 20px;
+ }
+
+ .job-detail .lists .lists-title {
+		font-weight: 600;
+ }
+
+  .job-detail .lists .list {
+		margin-top: 10px;
+ }
+
+ .job-detail .lists .list ul li {
+	 padding-top: 2px;
+	 padding-bottom: 2px;
+ }
+
+ .job-detail .closing {
+	margin-top: 20px;
+	line-height: 25px;
+ }
+
+.job-detail .apply {
+	margin-top: 20px;
+	text-align: center;
+}
+
+
+
+.resume-wrapper {
+  border: 1px #8a8a8a  dashed; 
+  text-align: center;
+}
+
+.resume-wrapper .resume-upload {
+  padding: 20px;
+}
+
+.resume-wrapper .view-remove {
+  padding: 15px 15px 0px 15px;
+}
+
+.resume-wrapper .resume-upload .icon {
+  font-size: 40px; 
+  display: block;
+	color: #7b7b7b;
+}
+
+.resume-wrapper .resume-upload:hover {
+  background-color: #E8EAEA;
+  color: white;
+  cursor: pointer; 
+}
+
+.resume-wrapper .text {
+  padding: 0px; 
+  display: block;
+	color: gray;
+}
+
+.nv-file-over {
+  border: 2px red dashed; 
+}
+
+
+
+
+
+
+
+
+
+
+

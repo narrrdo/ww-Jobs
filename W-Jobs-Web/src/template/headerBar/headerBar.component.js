@@ -14,9 +14,19 @@
 
 		var vm = this;
 
+		vm.init = function() {
+
+			vm.getCurrentUserName();
+		}
+
 		vm.change = function(lang) {
 
 			localeService.setLanguage(lang);
+		}
+
+		vm.getCurrentUserName = function() {
+
+			vm.fullName = tokenService.getFullName();
 		}
 
 		vm.logout = function() {

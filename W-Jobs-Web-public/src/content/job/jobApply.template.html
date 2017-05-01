@@ -1,0 +1,110 @@
+
+<page-title title="'global_jobApply' | translate" ng-init="vm.init()"></page-title>
+
+<form name="form" class="form" nv-file-drop uploader="vm.uploader" ng-submit="vm.save(form, vm.candidate)" autocomplete="off" novalidate>
+	
+	<div class="container-fluid page-content">
+		<div class="container job-detail">
+			<div class="row title">
+				<div class="col-xs-12">
+					{{vm.job.title}}
+				</div>
+			</div>
+
+			<br>
+
+			<!--Name --> 
+			<div class="row"> 
+				<div class="form-group col-xs-12 col-md-6 col-md-offset-3 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.name.$invalid]">
+					<div>
+						<input type="text" 
+								ng-model="vm.candidate.name" 
+								class="form-control" 
+								placeholder="{{'global_name' | translate}}"
+								id="name" 
+								name="name" 
+								maxlength="50"
+								max="50"
+								required>
+					</div>
+				</div>
+			</div>
+
+			<!--Last Name --> 
+			<div class="row"> 
+				<div class="form-group col-xs-12 col-md-6 col-md-offset-3 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.lastName.$invalid]">
+					<div>
+						<input type="text" 
+								ng-model="vm.candidate.lastName" 
+								class="form-control" 
+								placeholder="{{'global_lastName' | translate}}"
+								id="lastName" 
+								name="lastName" 
+								maxlength="50"
+								max="50"
+								required>
+					</div>
+				</div>
+			</div>
+
+			<!--Tel --> 
+			<div class="row"> 
+				<div class="form-group col-xs-12 col-md-6 col-md-offset-3 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.tel.$invalid]">
+					<div>
+						<input type="text" 
+								ng-model="vm.candidate.tel" 
+								class="form-control" 
+								placeholder="{{'global_tel' | translate}}"
+								id="tel" 
+								name="tel" 
+								mask="999.999.9999"
+								clean="true"
+								required>
+					</div>
+				</div>
+			</div>
+
+			<!--Email --> 
+			<div class="row"> 
+				<div class="form-group col-xs-12 col-md-6 col-md-offset-3 has-feedback" ng-class="{true : 'has-error'}[vm.submitted && form.email.$invalid]">
+					<div>
+						<input type="email" 
+								ng-model="vm.candidate.email" 
+								class="form-control" 
+								placeholder="{{'global_email' | translate}}"
+								id="email" 
+								name="email" 
+								maxlength="50"
+								max="50"
+								required>
+					</div>
+				</div>
+			</div>
+
+			<div class="row"> 
+				<div class="col-xs-12 col-md-6 col-md-offset-3" >
+					<upload id="vm.id" 
+						candidate="vm.candidate"
+						uploader="vm.uploader">
+					</upload>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 apply">
+					<input type="submit" 
+							class="custom-button" 
+							ng-init="vm.submitted = false"
+							ng-click="vm.submitted = true"
+							value="{{'global_apply' | translate}}">
+					</input>
+				</div>
+			</div>
+
+
+		</div>
+		<!---->
+	</div>
+</form>
+
+<page-footer></page-footer>

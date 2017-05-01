@@ -1,12 +1,14 @@
 <a class="btn btn-default" 
 	 role="button" 
 	 ng-click="vm.goBack()"
-	 ng-bind="'global_cancel' | translate">
+	 ng-bind="'global_cancel' | translate"
+	 ng-if="!vm.permission || (vm.permission && $root.hasPermission(vm.permission))">
 </a>
 
 <button type="submit" 
 				class="btn btn-primary" 
 				ng-init="vm.submitted = false"
 				ng-click="vm.submitted = true"
-				ng-bind="'global_save' | translate">
+				ng-bind="'global_save' | translate"
+				ng-if="!vm.permission || (vm.permission && $root.hasPermission(vm.permission))">
 </button>

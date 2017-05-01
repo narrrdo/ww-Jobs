@@ -1,0 +1,38 @@
+
+<page-title title="'global_jobDescription' | translate" ng-init="vm.init()"></page-title>
+
+
+<div class="container-fluid page-content">
+	<div class="container job-detail">
+		<div class="row title">
+			<div class="col-xs-12">
+				{{vm.job.title}}
+			</div>
+		</div>
+		<div class="row description">
+			<div class="col-xs-12 col-md-8 col-md-offset-2 text-justify">
+				{{vm.job.description}}
+			</div>
+		</div>
+		<div class="row lists" ng-repeat="j in vm.job.lists">
+			<div class="col-xs-12 col-md-8 col-md-offset-2 lists-title">
+				{{j.title}}
+			</div>
+			<div class="col-xs-12 col-md-8 col-md-offset-2 list" ng-bind-html="j.list">
+				
+			</div>
+		</div>
+		<div class="row closing">
+			<div class="col-xs-12 col-md-8 col-md-offset-2" ng-bind="vm.job.closing"></div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 apply">
+				<a class="custom-button" ui-sref="jobApply({id : vm.id})">{{'global_apply' | translate}}</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<page-footer></page-footer>

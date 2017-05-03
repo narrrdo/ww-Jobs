@@ -1,0 +1,22 @@
+<ion-view view-title="Job List">
+  <ion-content>
+    
+		<ul class="list">
+			<li class="item" ng-repeat="j in vm.jobList">
+				
+				<div class="row" ui-sref="app.jobDetail({id: j.id})">
+					<div class="col-90">
+						<i class="fa fa-suitcase"></i>
+						<span>{{ j.title }}</span><br>
+						<span>{{j.publishedDate | date:'MM/dd/yyyy' }}</span>
+					</div>
+					<div class="col-10" style="text-align: right;">
+						<i class="fa fa-chevron-right" aria-hidden="true" style="line-height: 40px;"></i>
+					</div>
+				</div>
+
+			</li>
+		</ul>
+
+  </ion-content>
+</ion-view>

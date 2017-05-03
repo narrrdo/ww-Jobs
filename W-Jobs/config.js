@@ -8,7 +8,9 @@ module.exports = {
     },
     expirationTokenMinute : '30m',
     'secretKey': '12345-67890-09876-54321',
-    'mongoUrl' : 'mongodb://localhost:27017/w-jobs',
+    mongoIP : 'localhost',
+    mongoPORT : 32770,
+    mongoDBName : 'w-jobs',
     'facebook': {
         clientID: '264967197274426',
         clientSecret: '18f2cb5720880088dbd73ea22df27f0a',

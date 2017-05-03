@@ -4,7 +4,7 @@
 	angular
 		.module("app")
 		.component('pageFooter', {
-			templateUrl: "template/footer.template.html",
+			templateUrl: "src/template/footer.template.html",
 			controller: Controller,		
 			controllerAs: "vm",
 			bindings: {

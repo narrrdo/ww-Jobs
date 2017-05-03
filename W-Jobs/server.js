@@ -90,8 +90,16 @@ function onListening() {
 
 function builMongoConection(){
 
+  var mongoIp = process.env.MONGO_PORT_27017_TCP_ADDR || config.mongoIP;
+  var mongoPort = process.env.MONGO_PORT_27017_TCP_PORT || config.mongoPORT;
+  var dbName = config.mongoDBName;
+
+  var mongoUrl = `mongodb://${mongoIp}:${mongoPort}/${dbName}`; 
+
+  console.log(mongoUrl);
+
   mongoose.Promise = bluebird;
-  mongoose.connect(config.mongoUrl);
+  mongoose.connect(mongoUrl);
   mongoose.set('debug', true);
 
   var db = mongoose.connection;

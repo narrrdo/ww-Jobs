@@ -16,7 +16,11 @@ _module.execute = function(){
 
 			if(error) reject(error);
 			
+			console.log(error)
+
 			resolve(jobs);
+
+			console.log(jobs)
 		});
 	});
 

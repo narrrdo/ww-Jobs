@@ -4,7 +4,7 @@
 	angular
 		.module("app")
 		.component('pageTitle', {
-			templateUrl: "template/title.template.html",
+			templateUrl: "src/template/title.template.html",
 			controller: Controller,		
 			controllerAs: "vm",
 			bindings: {

@@ -4,7 +4,7 @@
 	angular
 		.module("app")
 		.component('pageHeader', {
-			templateUrl: "template/header.template.html",
+			templateUrl: "src/template/header.template.html",
 			controller: Controller,		
 			controllerAs: "vm",
 			bindings: {

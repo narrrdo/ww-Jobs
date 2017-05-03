@@ -1,7 +1,6 @@
 {
   "name": "WW-Jobs",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "dependencies": {
     "bcrypt": "^1.0.2",
@@ -34,5 +33,7 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": [],
+  "description": ""
 }

@@ -4,7 +4,7 @@
 	angular
 		.module("app")
 		.component('jobApplySucess', {
-			templateUrl: "content/job/jobApplySucess.template.html",
+			templateUrl: "src/content/job/jobApplySucess.template.html",
 			controller: Controller,
 			controllerAs: "vm",
 			bindings: {

@@ -4,8 +4,15 @@ var gulp = require('gulp'),
 
 var paths = {
     src: 'src/**/*.*',
-    bower: 'bower_components/**/*.*'
+    bower: 'bower_components/**/*.*',
+    indexHtml: 'index.html',
+    indexJs: 'index.js'
 };
+
+gulp.task('index', function() {
+    return gulp.src([paths.indexHtml, paths.indexJs])
+        .pipe(gulp.dest('www/'));
+});
 
 gulp.task('src', function() {
     return gulp.src([paths.src])
@@ -20,6 +27,8 @@ gulp.task('bower', function() {
 gulp.task('watch', function() {
     gulp.watch(paths.src, ['src']);
     gulp.watch(paths.bower, ['bower']);
+    gulp.watch(paths.indexHtml, ['index']);
+    gulp.watch(paths.indexJs, ['index']);
 });
 
 gulp.task('webserver', function() {
@@ -37,4 +46,4 @@ gulp.task('webserver', function() {
 // });
 
 
-gulp.task('dev', ['src', 'bower', 'watch', 'webserver']); //livereload
+gulp.task('dev', ['index','src', 'bower', 'watch', 'webserver']); //livereload

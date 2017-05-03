@@ -9,7 +9,7 @@ angular
 	function config($translateProvider, $httpProvider, toastrConfig) { 
 
 		$translateProvider.useStaticFilesLoader({
-				prefix: 'assets/js/resources/locale/',
+				prefix: 'src/assets/js/resources/locale/',
 				suffix: '.json'
 			});
 

@@ -1,0 +1,26 @@
+<ion-view view-title="Job Description">
+  <ion-content>
+    
+		<div class="card job-detail">
+			<div class="item item-divider">
+				{{ vm.job.title}}
+			</div>
+			<div class="item item-text-wrap description">
+				<div>
+					{{vm.job.description}}
+				</div>
+
+				<div class="lists" ng-repeat="l in vm.job.lists">
+					<div class="lists-title" ng-bind="l.title"></div>
+					<div class="list" ng-bind-html="l.list"></div>
+				</div>
+
+				<div class="closing" ng-bind="vm.job.closing">
+
+				</div>
+
+			</div>
+		</div>
+
+  </ion-content>
+</ion-view>

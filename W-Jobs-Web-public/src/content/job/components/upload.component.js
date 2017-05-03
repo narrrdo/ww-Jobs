@@ -3,7 +3,7 @@
 	angular
 		.module("app")
 		.component('upload', {
-			templateUrl: "content/job/components/upload.template.html",
+			templateUrl: "src/content/job/components/upload.template.html",
 			controller: Controller,		
 			controllerAs: "vm",
 			bindings: {

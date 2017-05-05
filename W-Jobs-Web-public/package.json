@@ -9,6 +9,7 @@
     "gulp-connect": "^2.0.6"
   },
   "dependencies": {
+    "gulp-rename": "^1.2.2",
     "i18n": "^0.8.3",
     "request": "^2.81.0"
   }

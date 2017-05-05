@@ -16,7 +16,7 @@
 			
 			// Generic Components
 			CHECKBOX_LIST : generic_base + "checkBoxList/",
-			CANCE_OK_BUTTON : generic_base + "cancelOkButton/",
+			CANCE_OK_BUTTON : generic_base + "cancelOKButton/",
 			VALIDATION_FORM_ALERT: generic_base + "validationFormAlert/",
 			PAGE_TOP_BAR: generic_base + "pageTopBar/",
 			BAR_SECTION: generic_base + "pageTopBar/",

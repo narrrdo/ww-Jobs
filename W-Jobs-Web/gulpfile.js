@@ -177,6 +177,31 @@ gulp.task('custom-less', function() {
 });
 
 
+gulp.task('env-dev', function() {
+    return gulp.src('.env/env.js')
+        .pipe(rename({
+            dirname: "src/assets/js",
+            basename: "env",
+            prefix: "",
+            suffix: "",
+            extname: ".js"
+        }))
+        .pipe(gulp.dest('www/'));
+});
+
+gulp.task('env-uat', function() {
+    return gulp.src('.env/env-uat.js')
+        .pipe(rename({
+            dirname: "src/assets/js",
+            basename: "env",
+            prefix: "",
+            suffix: "",
+            extname: ".js"
+        }))
+        .pipe(gulp.dest('www/'));
+});
+
+
 /**
  * Watch custom files
  */
@@ -216,5 +241,5 @@ gulp.task('build',   ['build-assets', 'build-custom']); //'inject',
 gulp.task('prod',    ['usemin', 'build', 'webserver', 'livereload', 'watch']);
 gulp.task('default', ['inject','index-js','build', 'webserver', 'livereload', 'watch']);
 
-// Dev
-gulp.task('dev', ['copy-file', 'inject-css-js','copy-index-js','custom-less','webserver', 'livereload', 'watch']);
+gulp.task('dev', ['copy-file','env-dev','inject-css-js','copy-index-js','custom-less','webserver', 'livereload', 'watch']);
+gulp.task('uat', ['copy-file','env-uat','inject-css-js','copy-index-js','custom-less','webserver','livereload', 'watch']);

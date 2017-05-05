@@ -14,7 +14,7 @@ angular
 			});
 
 		jwtOptionsProvider.config({
-			whiteListedDomains: ['localhost'],
+			whiteListedDomains: WHITE_LISTED_DOMAINS,
 			unauthenticatedRedirectPath: '/',
       tokenGetter: ['tokenService', function(tokenService) {
         return tokenService.getToken();

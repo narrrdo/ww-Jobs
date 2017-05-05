@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
+    rename = require('gulp-rename'),
     watch = require('gulp-watch');
 
 var paths = {
@@ -24,6 +25,32 @@ gulp.task('bower', function() {
         .pipe(gulp.dest('www/bower_components/'));
 });
 
+
+gulp.task('env-dev', function() {
+    return gulp.src('.env/env.js')
+        .pipe(rename({
+            dirname: "src/assets/js",
+            basename: "env",
+            prefix: "",
+            suffix: "",
+            extname: ".js"
+        }))
+        .pipe(gulp.dest('www/'));
+});
+
+gulp.task('env-uat', function() {
+    return gulp.src('.env/env-uat.js')
+        .pipe(rename({
+            dirname: "src/assets/js",
+            basename: "env",
+            prefix: "",
+            suffix: "",
+            extname: ".js"
+        }))
+        .pipe(gulp.dest('www/'));
+});
+
+
 gulp.task('watch', function() {
     gulp.watch(paths.src, ['src']);
     gulp.watch(paths.bower, ['bower']);
@@ -46,4 +73,5 @@ gulp.task('webserver', function() {
 // });
 
 
-gulp.task('dev', ['index','src', 'bower', 'watch', 'webserver']); //livereload
+gulp.task('dev', ['index','src', 'env-dev', 'bower', 'watch', 'webserver']); //livereload
+gulp.task('uat', ['index','src', 'env-uat', 'bower', 'watch', 'webserver']);
